@@ -2,4 +2,5 @@
 
 ## Mooshak 2.0
 
+tutorial for git-noobs:
 https://githowto.com/ <-- read this
