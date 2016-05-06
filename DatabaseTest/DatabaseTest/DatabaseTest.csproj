@@ -244,10 +244,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Details.cshtml" />
+    <Content Include="Views\Assignments\Teacher_Options_View.cshtml" />
+    <Content Include="Views\Assignments\Admin_Userlist_View.cshtml" />
+    <Content Include="Views\Assignments\Admin_Errors_View.cshtml" />
+    <Content Include="Views\Assignments\Admin_Courses_View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Assignments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
