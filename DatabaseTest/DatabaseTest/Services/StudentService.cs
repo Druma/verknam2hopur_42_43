@@ -9,14 +9,18 @@ namespace DatabaseTest.Services
 {
     public class StudentService
     {
-        private dbConstext db = new dbConstext();
+        private dbConstext _db = new dbConstext();
 
-        public List<user>getNames()
+        public List<user>getAllStudents()
         {
-            var result = (from n in db.users
+            var result = (from n in _db.users
+                          where n.userTypeID == 3
+                          orderby n.name ascending
                           select n).ToList();
 
             return result;
         }
+
+
     }
 }
