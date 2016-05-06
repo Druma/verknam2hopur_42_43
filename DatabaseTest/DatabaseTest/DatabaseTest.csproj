@@ -52,8 +52,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -173,31 +171,23 @@
     <Compile Include="Controllers\AssignmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Entities\assignment.cs" />
-    <Compile Include="Models\Entities\assignmentPart.cs" />
-    <Compile Include="Models\Entities\cours.cs" />
-    <Compile Include="Models\Entities\dbConstext.cs" />
-    <Compile Include="Models\Entities\group.cs" />
-    <Compile Include="Models\Entities\studentCours.cs" />
-    <Compile Include="Models\Entities\teacherCours.cs" />
-    <Compile Include="Models\Entities\user.cs" />
-    <Compile Include="Models\Entities\userAssignmentStat.cs" />
-    <Compile Include="Models\Entities\userType.cs" />
-    <Compile Include="Models\Entities\userUploadedSolution.cs" />
+    <Compile Include="Models\Entities\Assignment.cs" />
+    <Compile Include="Models\Entities\AssignmentMilestone.cs" />
+    <Compile Include="Models\Entities\Course.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\AssignmentMilestoneViewModel.cs" />
     <Compile Include="Models\ViewModels\AssignmentViewModel.cs" />
+
     <Compile Include="Models\ViewModels\StudentViewModel.cs" />
     <Compile Include="Models\ViewModels\TeacherViewModel.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AssignmentService.cs" />
-    <Compile Include="Services\StudentService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -258,11 +248,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Details.cshtml" />
-    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Assignments\Teacher_Options_View.cshtml" />
+    <Content Include="Views\Assignments\Admin_Userlist_View.cshtml" />
+    <Content Include="Views\Assignments\Admin_Errors_View.cshtml" />
+    <Content Include="Views\Assignments\Admin_Courses_View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Assignments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -271,9 +263,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

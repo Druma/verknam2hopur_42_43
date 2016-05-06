@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using DatabaseTest.Models.Entities;
 
 namespace DatabaseTest.Models
 {
@@ -20,7 +21,9 @@ namespace DatabaseTest.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        
+        public DbSet<Assignment> Assignments { get; set; }
+        public DbSet<AssignmentMilestone> Milestones { get; set; }
+        public DbSet<Course> Courses { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

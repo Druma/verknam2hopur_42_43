@@ -10,9 +10,24 @@ namespace DatabaseTest.Controllers
     public class AssignmentsController : Controller
     {
         private AssignmentService _service = new AssignmentService();
-        
+
         // GET: Assignments
-        public ActionResult Index()
+        public ActionResult Admin_Userlist_View()
+        {
+            return View();
+        }
+
+        public ActionResult Admin_Courses_View()
+        {
+            return View();
+        }
+
+        public ActionResult Admin_Errors_View()
+        {
+            return View();
+        }
+
+        public ActionResult Teacher_Options_View()
         {
             return View();
         }
