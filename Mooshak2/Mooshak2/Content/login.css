@@ -1,52 +1,81 @@
-﻿.checkbox{
-  font-family: Arial, Helvetica, sans-serif;
+﻿.checkbox
+{
+    font-family: Arial, Helvetica, sans-serif;
 }
-#hrlogo{
-  width:6.25em;height:6.25em;
-  display: block;
+#hrlogo
+{
+    width:6.25em;height:6.25em;
+    display: block;
     margin: 0 auto;
 }
-#takki{
-  text-align: center;
-  margin-left: 1.375em;
-  width: 18.75em;
+#takki
+{
+    text-align: center;
+    margin-left: 1.375em;
+    width: 18.75em;
 }
  
-.wrapper {    
+.wrapper
+{
     margin-top: 8.125em;
     margin-bottom: 1.25em
 }
-.form-signin {
-  max-width: 26.25em;
-  padding: 1.875em 2.375em 4.125em;
-  margin: 0 auto;
-  background-color: white;
-  border: 0.1875em dotted rgba(0,0,0,0.1);
+.form-signin
+{
+    max-width: 26.25em;
+    padding: 1.875em 2.375em 4.125em;
+    margin: 0 auto;
+    background-color: white;
+    border: 0.1875em dotted rgba(0,0,0,0.1);
   }
  
-.form-control {
-  position: relative;
-  font-size: 1em;
-  height: auto;
-  padding: 0.625em;
-  margin-top: 2.5em;
-  margin-bottom: 2.5em;
+.form-control
+{
+    position: relative;
+    font-size: 1em;
+    height: auto;
+    padding: 0.625em;
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
 }
  
-.input[type="text"] {
-  margin-bottom: 0em;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+.input[type="text"]
+{
+    margin-bottom: 0em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
  
-.input[type="password"] {
-  margin-bottom: 1.25em;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.input[type="password"]
+{
+    margin-bottom: 1.25em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
-.LabelNone{
+.LabelNone
+{
     display: none;
 }
-legend{
+legend
+{
     display: none;
+}
+
+/*
+    When the screen is less then 35em (or the max width is 35em)
+    35em = 35*15px = 560px
+*/
+@media only screen and (max-width: 35em)
+{
+    #takki
+    {
+        margin: 0em;
+        width: 100%;
+    }
+    .form-signin
+    {
+        max-width: 100%;
+        padding: 0em;
+        border: none;
+    }
 }
