@@ -2,46 +2,45 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 #hrlogo{
-  width:100px;height:100px;
+  width:6.25em;height:6.25em;
   display: block;
     margin: 0 auto;
 }
 #takki{
   text-align: center;
-  margin-left: 22px;
-  width: 300px;
+  margin-left: 1.375em;
+  width: 18.75em;
 }
  
 .wrapper {    
-    margin-top: 130px;
-    margin-bottom: 20px;
- 
+    margin-top: 8.125em;
+    margin-bottom: 1.25em
 }
 .form-signin {
-  max-width: 420px;
-  padding: 30px 38px 66px;
+  max-width: 26.25em;
+  padding: 1.875em 2.375em 4.125em;
   margin: 0 auto;
   background-color: white;
-  border: 3px dotted rgba(0,0,0,0.1);
+  border: 0.1875em dotted rgba(0,0,0,0.1);
   }
  
 .form-control {
   position: relative;
-  font-size: 16px;
+  font-size: 1em;
   height: auto;
-  padding: 10px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  padding: 0.625em;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
 }
  
 .input[type="text"] {
-  margin-bottom: 0px;
+  margin-bottom: 0em;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
  
 .input[type="password"] {
-  margin-bottom: 20px;
+  margin-bottom: 1.25em;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
