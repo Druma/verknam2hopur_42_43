@@ -1,45 +1,41 @@
-<<<<<<< HEAD
-﻿header{
-    display: block;
-=======
-﻿body
+header
 {
-
->>>>>>> 1b3a4bf90935fa09b3651b6f7ee6746d87bb3ee5
+    display: block;
 }
+
 img{
-    margin-left: 10px;
+    margin-left: 0.625em;
 }
  
 .inputbox1{
-    width: 400px;
+    width: 25em;
     margin-right: 0px;
-    margin-left: 140px;
-    margin-top: -100px;
+    margin-left: 8.75em;
+    margin-top: -6.25em;
  
 }
 .dropDown{
-    margin-left: 140px;
+    margin-left: 8.75em;
 }
  
  
 .verkefnahluti{
-    margin-left: 333px;
-    margin-top: -55px;
+    margin-left: 20.8125em;
+    margin-top: -3.4375em;
  
 }
  
 .uploading{
-    margin-left: 540px;
-    margin-top: -89px;
+    margin-left: 33.75em;
+    margin-top: -5.5625em;
 }
  
 .logout{
-    margin-left: 750px;
-    margin-top: -40px;
+    margin-left: 46.875em;
+    margin-top: -2.5em;
 }
  
 .wrapper{
-    width: 940px;
-    margin: 20px auto 20px auto;
+    width: 58.75em;
+    margin: 1.25em auto 1.25em auto;
 }
