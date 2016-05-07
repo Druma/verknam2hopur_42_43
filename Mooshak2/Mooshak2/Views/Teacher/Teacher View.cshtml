@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Teacher_Options_View";
+}
+
+<h2>Teacher View</h2>
+
+<body>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+        <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+        <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h3>HOME</h3>
+            <div class="col-md-4">
+                <img href="http://cadia.ru.is/images/RU_midjad_white2.gif" />
+                <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" />
+                <input type="text" value="Notendanafn" />
+                <select>
+                    <option value="1"> Áfangi</option>
+                    <option value="2"> Verkefni</option>
+                </select>
+                <input type="submit" value="Stofna" />
+
+                <form action="www.ru.is">
+                    <input type="submit" value="Logout" class="btn btn-default">
+                </form>
+            </div>
+
+            <div class="col-md-8">
+
+            </div>
+        </div>
+
+        <div id="menu1" class="tab-pane fade">
+            <h3>Menu 1</h3>
+            <div class="col-md-4">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nemendur Valins Áfanga</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- @ foreach(ApplicationUser.RealName where Authorization = 1)
+                 {
+                 <tr>
+                     <td>
+                         this.RealName;
+                     </td>
+                    <td>
+                        this.SubmissionNumber;
+                    </td>
+                 </tr>
+                 } TODO: Finna almennilegan kóða til að sækja þetta-->
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    
+
+
+</body>
