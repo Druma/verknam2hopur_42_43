@@ -208,6 +208,7 @@
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="courses.cs">
       <DependentUpon>MainDbModel.tt</DependentUpon>
     </Compile>
@@ -357,12 +358,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Admin\Admin_View.cshtml" />
-    <Content Include="Views\Teacher\Teacher_View.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
     <Content Include="Views\Shared\Student\Index.cshtml" />
     <Content Include="Views\Shared\_Students.cshtml" />
+    <Content Include="Views\Teacher\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
