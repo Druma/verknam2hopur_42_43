@@ -206,6 +206,7 @@
     <Compile Include="assignments.cs">
       <DependentUpon>MainDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="courses.cs">
       <DependentUpon>MainDbModel.tt</DependentUpon>
