@@ -1,0 +1,216 @@
+﻿@{
+    ViewBag.Title = "Admin_Userlist_View";
+}
+
+<h2>Admin</h2>
+
+<body>
+
+    <img href="http://cadia.ru.is/images/RU_midjad_white2.gif" />
+    <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" />
+    <input type="text" value="Notandanafn" />
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+        <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+        <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h3>HOME</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Notendur HR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- @ foreach(ApplicationUser.RealName where Authorization = 1)
+                     {
+                     <tr>
+                         <td>
+                             this.RealName;
+                         </td>
+                     </tr>
+                     } TODO: Finna almennilegan kóða til að sækja þetta-->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <form action="www.ru.is">
+                        <input type="radio" value="Nemandi" />
+                        <input type="radio" value="Kennari" />
+                    </form>
+
+
+                </div>
+                <div class="col-md-4">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Notendur Mooshak</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- @ foreach(ApplicationUser.RealName where Authorization = 1)
+                     {
+                     <tr>
+                         <td>
+                             this.RealName;
+                         </td>
+                     </tr>
+                     } TODO: Finna almennilegan kóða til að sækja þetta-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <h3>Menu 1</h3>
+            <img href="http://cadia.ru.is/images/RU_midjad_white2.gif" />
+            <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" />
+            <input type="text" value="Notandanafn" />
+
+            <!--TODO: Put code to find errors to report-->
+        </div>
+
+        <div id="menu2" class="tab-pane fade">
+            <h3>Menu 2</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="submit" value="Stofna nýjan áfanga" />
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Stofnaðir Áfangar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Forritun</td>
+                            </tr>
+                            <tr>
+                                <td>Gagnaskipan</td>
+                            </tr>
+                            <tr>
+                                <td>Python</td>
+                            </tr>
+                            <tr>
+                                <td>Tölvuhögun</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <select id="kennaraval">
+                        <option></option>
+                        <option></option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nemendur Valins Áfanga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- @ foreach(ApplicationUser.RealName where Authorization = 1)
+                     {
+                     <tr>
+                         <td>
+                             this.RealName;
+                         </td>
+                     </tr>
+                     } TODO: Finna almennilegan kóða til að sækja þetta-->
+
+                        </tbody>
+                    </table>
+
+                    <input type="submit" value="Eyða völdum nemendum úr áfanganum" />
+
+                </div>
+
+                <div class="col-md-4">
+                    <input type="submit">Tengja valda nemendur við valin áfanga</input>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Notendur Mooshak</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- @ foreach(ApplicationUser.RealName where Authorization = 1)
+                     {
+                     <tr>
+                         <td>
+                             this.RealName;
+                         </td>
+                     </tr>
+                     } TODO: Finna almennilegan kóða til að sækja þetta-->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Notendur HR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- @ foreach(ApplicationUser.RealName where Authorization = 1)
+                     {
+                     <tr>
+                         <td>
+                             this.RealName;
+                         </td>
+                     </tr>
+                     } TODO: Finna almennilegan kóða til að sækja þetta-->
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <form action="www.ru.is">
+                <input type="radio" value="Nemandi" />
+                <input type="radio" value="Kennari" />
+            </form>
+
+
+        </div>
+        <div class="col-md-4">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Notendur Mooshak</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- @ foreach(ApplicationUser.RealName where Authorization = 1)
+                     {
+                     <tr>
+                         <td>
+                             this.RealName;
+                         </td>
+                     </tr>
+                     } TODO: Finna almennilegan kóða til að sækja þetta-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <form action="www.ru.is">
+        <input type="submit" value="Logout" class="btn btn-default">
+    </form>
+
+</body>
