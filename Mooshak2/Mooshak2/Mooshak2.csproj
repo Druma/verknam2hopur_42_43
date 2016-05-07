@@ -274,6 +274,7 @@
     <Compile Include="userUploadedSolution.cs">
       <DependentUpon>MainDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
     <Compile Include="ViewModels\TeacherViewModal.cs" />
     <Compile Include="ViewModels\UserModel.cs" />
