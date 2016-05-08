@@ -22,14 +22,50 @@
                     <option value="" disabled selected>Course</option>
                 </select>
                 <input type="submit" value="Create new project" />
-
+                    
                 <form action="../Home/Index">
                     <input type="submit" value="Logout" class="btn btn-default">
                 </form>
             </div>
 
             <div class="col-md-8">
+                <h3>Verkefni</h3><!--Setja inn kóða til að setja rétt númer inn-->
 
+                <p>Verkefni hefst <span>    </span> Verkefni endar</p>
+                <form action="">
+                    <input type="datetime" placeholder="9/9/1999"/>
+                    <input type="datetime" placeholder="9/9/1999" />
+                    <input type="submit" value="vista" class="btn btn-default" />               
+                    <input type="checkbox" value="Leyfa hópa" />
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    <input type="checkbox" value="Takmarks endurtekningar" />
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>5</option>
+                            <option>7</option>
+                            <option>10</option>
+                            <option>15</option>
+                            <option>20</option>
+                        </select>
+                    <p>Fjöldi verkefnahluta</p>
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                </form>
+
+                <!--TODO: Code for dynamic display of Solution picks and project descriptions.-->
             </div>
         </div>
 
