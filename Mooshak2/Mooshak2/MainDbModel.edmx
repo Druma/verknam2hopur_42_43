@@ -1,0 +1,781 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VLN2_2016_H42Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="assignmentParts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descriptoin" Type="nvarchar(max)" />
+          <Property Name="solutionFile" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignmentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="assignments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="maxSubmisions" Type="int" />
+          <Property Name="groupSize" Type="int" />
+          <Property Name="startDate" Type="datetime" Nullable="false" />
+          <Property Name="endDate" Type="datetime" Nullable="false" />
+          <Property Name="courseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="courses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="assignmentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="studentCourses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="courseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemUsers">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teacherCourses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="courseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userAssignmentStats">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="submissionCount" Type="int" Nullable="false" />
+          <Property Name="solved" Type="bit" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="assignmentPartID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="userTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userUploadedSolution">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="solution" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="assignmentPartID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_assignments_courses">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="assignments" Type="Self.assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="assignments">
+              <PropertyRef Name="courseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_assignments">
+          <End Role="assignments" Type="Self.assignments" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignments">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="assignmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_studentCourses_courses">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="studentCourses" Type="Self.studentCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="studentCourses">
+              <PropertyRef Name="courseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_studentCourses_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="studentCourses" Type="Self.studentCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="studentCourses">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teacherCourses_courses">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="teacherCourses" Type="Self.teacherCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="teacherCourses">
+              <PropertyRef Name="courseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teacherCourses_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="teacherCourses" Type="Self.teacherCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="teacherCourses">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userAssignmentStats_assignmentPart">
+          <End Role="assignmentParts" Type="Self.assignmentParts" Multiplicity="1" />
+          <End Role="userAssignmentStats" Type="Self.userAssignmentStats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignmentParts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="userAssignmentStats">
+              <PropertyRef Name="assignmentPartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userAssignmentStats_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="userAssignmentStats" Type="Self.userAssignmentStats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="userAssignmentStats">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_userTypes">
+          <End Role="userTypes" Type="Self.userTypes" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="userTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userUploadedSolution_assignmentParts">
+          <End Role="assignmentParts" Type="Self.assignmentParts" Multiplicity="1" />
+          <End Role="userUploadedSolution" Type="Self.userUploadedSolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignmentParts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="userUploadedSolution">
+              <PropertyRef Name="assignmentPartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userUploadedSolution_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="userUploadedSolution" Type="Self.userUploadedSolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="userUploadedSolution">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VLN2_2016_H42ModelStoreContainer">
+          <EntitySet Name="assignmentParts" EntityType="Self.assignmentParts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="assignments" EntityType="Self.assignments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="courses" EntityType="Self.courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="groups" EntityType="Self.groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="studentCourses" EntityType="Self.studentCourses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemUsers" EntityType="Self.SystemUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teacherCourses" EntityType="Self.teacherCourses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userAssignmentStats" EntityType="Self.userAssignmentStats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userTypes" EntityType="Self.userTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userUploadedSolution" EntityType="Self.userUploadedSolution" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_assignments_courses" Association="Self.FK_assignments_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="assignments" EntitySet="assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_assignments" Association="Self.FK_groups_assignments">
+            <End Role="assignments" EntitySet="assignments" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_users" Association="Self.FK_groups_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_studentCourses_courses" Association="Self.FK_studentCourses_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="studentCourses" EntitySet="studentCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_studentCourses_users" Association="Self.FK_studentCourses_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="studentCourses" EntitySet="studentCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teacherCourses_courses" Association="Self.FK_teacherCourses_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="teacherCourses" EntitySet="teacherCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teacherCourses_users" Association="Self.FK_teacherCourses_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="teacherCourses" EntitySet="teacherCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userAssignmentStats_assignmentPart" Association="Self.FK_userAssignmentStats_assignmentPart">
+            <End Role="assignmentParts" EntitySet="assignmentParts" />
+            <End Role="userAssignmentStats" EntitySet="userAssignmentStats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userAssignmentStats_users" Association="Self.FK_userAssignmentStats_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="userAssignmentStats" EntitySet="userAssignmentStats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_userTypes" Association="Self.FK_users_userTypes">
+            <End Role="userTypes" EntitySet="userTypes" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userUploadedSolution_assignmentParts" Association="Self.FK_userUploadedSolution_assignmentParts">
+            <End Role="assignmentParts" EntitySet="assignmentParts" />
+            <End Role="userUploadedSolution" EntitySet="userUploadedSolution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userUploadedSolution_users" Association="Self.FK_userUploadedSolution_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="userUploadedSolution" EntitySet="userUploadedSolution" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VLN2_2016_H42Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="assignmentParts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descriptoin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="solutionFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="assignmentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="userAssignmentStats" Relationship="Self.FK_userAssignmentStats_assignmentPart" FromRole="assignmentParts" ToRole="userAssignmentStats" />
+          <NavigationProperty Name="userUploadedSolution" Relationship="Self.FK_userUploadedSolution_assignmentParts" FromRole="assignmentParts" ToRole="userUploadedSolution" />
+        </EntityType>
+        <EntityType Name="assignments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="maxSubmisions" Type="Int32" />
+          <Property Name="groupSize" Type="Int32" />
+          <Property Name="startDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="endDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="courseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="courses" Relationship="Self.FK_assignments_courses" FromRole="assignments" ToRole="courses" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_groups_assignments" FromRole="assignments" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="courses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="assignments" Relationship="Self.FK_assignments_courses" FromRole="courses" ToRole="assignments" />
+          <NavigationProperty Name="studentCourses" Relationship="Self.FK_studentCourses_courses" FromRole="courses" ToRole="studentCourses" />
+          <NavigationProperty Name="teacherCourses" Relationship="Self.FK_teacherCourses_courses" FromRole="courses" ToRole="teacherCourses" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="assignmentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="assignments" Relationship="Self.FK_groups_assignments" FromRole="groups" ToRole="assignments" />
+          <NavigationProperty Name="users" Relationship="Self.FK_groups_users" FromRole="groups" ToRole="users" />
+        </EntityType>
+        <EntityType Name="studentCourses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="courseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="courses" Relationship="Self.FK_studentCourses_courses" FromRole="studentCourses" ToRole="courses" />
+          <NavigationProperty Name="users" Relationship="Self.FK_studentCourses_users" FromRole="studentCourses" ToRole="users" />
+        </EntityType>
+        <EntityType Name="SystemUsers">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teacherCourses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="courseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="courses" Relationship="Self.FK_teacherCourses_courses" FromRole="teacherCourses" ToRole="courses" />
+          <NavigationProperty Name="users" Relationship="Self.FK_teacherCourses_users" FromRole="teacherCourses" ToRole="users" />
+        </EntityType>
+        <EntityType Name="userAssignmentStats">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="submissionCount" Type="Int32" Nullable="false" />
+          <Property Name="solved" Type="Boolean" Nullable="false" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="assignmentPartID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="assignmentParts" Relationship="Self.FK_userAssignmentStats_assignmentPart" FromRole="userAssignmentStats" ToRole="assignmentParts" />
+          <NavigationProperty Name="users" Relationship="Self.FK_userAssignmentStats_users" FromRole="userAssignmentStats" ToRole="users" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_groups_users" FromRole="users" ToRole="groups" />
+          <NavigationProperty Name="studentCourses" Relationship="Self.FK_studentCourses_users" FromRole="users" ToRole="studentCourses" />
+          <NavigationProperty Name="teacherCourses" Relationship="Self.FK_teacherCourses_users" FromRole="users" ToRole="teacherCourses" />
+          <NavigationProperty Name="userAssignmentStats" Relationship="Self.FK_userAssignmentStats_users" FromRole="users" ToRole="userAssignmentStats" />
+          <NavigationProperty Name="userTypes" Relationship="Self.FK_users_userTypes" FromRole="users" ToRole="userTypes" />
+          <NavigationProperty Name="userUploadedSolution" Relationship="Self.FK_userUploadedSolution_users" FromRole="users" ToRole="userUploadedSolution" />
+        </EntityType>
+        <EntityType Name="userTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.FK_users_userTypes" FromRole="userTypes" ToRole="users" />
+        </EntityType>
+        <EntityType Name="userUploadedSolution">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="solution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="assignmentPartID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="assignmentParts" Relationship="Self.FK_userUploadedSolution_assignmentParts" FromRole="userUploadedSolution" ToRole="assignmentParts" />
+          <NavigationProperty Name="users" Relationship="Self.FK_userUploadedSolution_users" FromRole="userUploadedSolution" ToRole="users" />
+        </EntityType>
+        <Association Name="FK_userAssignmentStats_assignmentPart">
+          <End Role="assignmentParts" Type="Self.assignmentParts" Multiplicity="1" />
+          <End Role="userAssignmentStats" Type="Self.userAssignmentStats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignmentParts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="userAssignmentStats">
+              <PropertyRef Name="assignmentPartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userUploadedSolution_assignmentParts">
+          <End Role="assignmentParts" Type="Self.assignmentParts" Multiplicity="1" />
+          <End Role="userUploadedSolution" Type="Self.userUploadedSolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignmentParts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="userUploadedSolution">
+              <PropertyRef Name="assignmentPartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_assignments_courses">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="assignments" Type="Self.assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="assignments">
+              <PropertyRef Name="courseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_assignments">
+          <End Role="assignments" Type="Self.assignments" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignments">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="assignmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_studentCourses_courses">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="studentCourses" Type="Self.studentCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="studentCourses">
+              <PropertyRef Name="courseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teacherCourses_courses">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="teacherCourses" Type="Self.teacherCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="teacherCourses">
+              <PropertyRef Name="courseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_studentCourses_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="studentCourses" Type="Self.studentCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="studentCourses">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_teacherCourses_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="teacherCourses" Type="Self.teacherCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="teacherCourses">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userAssignmentStats_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="userAssignmentStats" Type="Self.userAssignmentStats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="userAssignmentStats">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_userTypes">
+          <End Role="userTypes" Type="Self.userTypes" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="userTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userUploadedSolution_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="userUploadedSolution" Type="Self.userUploadedSolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="userUploadedSolution">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VLN2_2016_H42Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="assignmentParts" EntityType="Self.assignmentParts" />
+          <EntitySet Name="assignments" EntityType="Self.assignments" />
+          <EntitySet Name="courses" EntityType="Self.courses" />
+          <EntitySet Name="groups" EntityType="Self.groups" />
+          <EntitySet Name="studentCourses" EntityType="Self.studentCourses" />
+          <EntitySet Name="SystemUsers" EntityType="Self.SystemUsers" />
+          <EntitySet Name="teacherCourses" EntityType="Self.teacherCourses" />
+          <EntitySet Name="userAssignmentStats" EntityType="Self.userAssignmentStats" />
+          <EntitySet Name="users" EntityType="Self.users" />
+          <EntitySet Name="userTypes" EntityType="Self.userTypes" />
+          <EntitySet Name="userUploadedSolution" EntityType="Self.userUploadedSolution" />
+          <AssociationSet Name="FK_userAssignmentStats_assignmentPart" Association="Self.FK_userAssignmentStats_assignmentPart">
+            <End Role="assignmentParts" EntitySet="assignmentParts" />
+            <End Role="userAssignmentStats" EntitySet="userAssignmentStats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userUploadedSolution_assignmentParts" Association="Self.FK_userUploadedSolution_assignmentParts">
+            <End Role="assignmentParts" EntitySet="assignmentParts" />
+            <End Role="userUploadedSolution" EntitySet="userUploadedSolution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_assignments_courses" Association="Self.FK_assignments_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="assignments" EntitySet="assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_assignments" Association="Self.FK_groups_assignments">
+            <End Role="assignments" EntitySet="assignments" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_studentCourses_courses" Association="Self.FK_studentCourses_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="studentCourses" EntitySet="studentCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teacherCourses_courses" Association="Self.FK_teacherCourses_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="teacherCourses" EntitySet="teacherCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_users" Association="Self.FK_groups_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_studentCourses_users" Association="Self.FK_studentCourses_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="studentCourses" EntitySet="studentCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_teacherCourses_users" Association="Self.FK_teacherCourses_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="teacherCourses" EntitySet="teacherCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userAssignmentStats_users" Association="Self.FK_userAssignmentStats_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="userAssignmentStats" EntitySet="userAssignmentStats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_userTypes" Association="Self.FK_users_userTypes">
+            <End Role="userTypes" EntitySet="userTypes" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userUploadedSolution_users" Association="Self.FK_userUploadedSolution_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="userUploadedSolution" EntitySet="userUploadedSolution" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VLN2_2016_H42ModelStoreContainer" CdmEntityContainer="VLN2_2016_H42Entities">
+          <EntitySetMapping Name="assignmentParts">
+            <EntityTypeMapping TypeName="VLN2_2016_H42Model.assignmentParts">
+              <MappingFragment StoreEntitySet="assignmentParts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="descriptoin" ColumnName="descriptoin" />
+                <ScalarProperty Name="solutionFile" ColumnName="solutionFile" />
+                <ScalarProperty Name="assignmentID" ColumnName="assignmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assignments">
+            <EntityTypeMapping TypeName="VLN2_2016_H42Model.assignments">
+              <MappingFragment StoreEntitySet="assignments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="maxSubmisions" ColumnName="maxSubmisions" />
+                <ScalarProperty Name="groupSize" ColumnName="groupSize" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="courseID" ColumnName="courseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="courses">
+            <EntityTypeMapping TypeName="VLN2_2016_H42Model.courses">
+              <MappingFragment StoreEntitySet="courses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="VLN2_2016_H42Model.groups">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="assignmentID" ColumnName="assignmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="studentCourses">
+            <EntityTypeMapping TypeName="VLN2_2016_H42Model.studentCourses">
+              <MappingFragment StoreEntitySet="studentCourses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="courseID" ColumnName="courseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemUsers">
+            <EntityTypeMapping TypeName="VLN2_2016_H42Model.SystemUsers">
+              <MappingFragment StoreEntitySet="SystemUsers">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teacherCourses">
+            <EntityTypeMapping TypeName="VLN2_2016_H42Model.teacherCourses">
+              <MappingFragment StoreEntitySet="teacherCourses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="courseID" ColumnName="courseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userAssignmentStats">
+            <EntityTypeMapping TypeName="VLN2_2016_H42Model.userAssignmentStats">
+              <MappingFragment StoreEntitySet="userAssignmentStats">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="submissionCount" ColumnName="submissionCount" />
+                <ScalarProperty Name="solved" ColumnName="solved" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="assignmentPartID" ColumnName="assignmentPartID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="VLN2_2016_H42Model.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userTypeID" ColumnName="userTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userTypes">
+            <EntityTypeMapping TypeName="VLN2_2016_H42Model.userTypes">
+              <MappingFragment StoreEntitySet="userTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userUploadedSolution">
+            <EntityTypeMapping TypeName="VLN2_2016_H42Model.userUploadedSolution">
+              <MappingFragment StoreEntitySet="userUploadedSolution">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="solution" ColumnName="solution" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="assignmentPartID" ColumnName="assignmentPartID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f4c37a2a0e645c989e057299c0301fe" Name="Diagram1">
+        <EntityTypeShape EntityType="VLN2_2016_H42Model.assignmentParts" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H42Model.assignments" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H42Model.courses" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H42Model.groups" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H42Model.studentCourses" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H42Model.SystemUsers" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H42Model.teacherCourses" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H42Model.userAssignmentStats" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H42Model.users" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H42Model.userTypes" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H42Model.userUploadedSolution" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_userAssignmentStats_assignmentPart" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_userUploadedSolution_assignmentParts" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_assignments_courses" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_groups_assignments" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_studentCourses_courses" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_teacherCourses_courses" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_groups_users" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_studentCourses_users" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_teacherCourses_users" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_userAssignmentStats_users" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_users_userTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H42Model.FK_userUploadedSolution_users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

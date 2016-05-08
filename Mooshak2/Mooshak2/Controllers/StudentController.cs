@@ -15,10 +15,10 @@ namespace Mooshak2.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            StudentViewModel studentViewModel = new StudentViewModel();
-            var viewModel = _studentService.getAllStudents();
-            studentViewModel.Name = viewModel.ToString();
-            return View(studentViewModel);
+           // StudentViewModel studentViewModel = new StudentViewModel();
+          //  var viewModel = _studentService.getAllStudents();
+          //  studentViewModel.Name = viewModel.ToString();
+            return View(); //studentViewModel
         }
     }
 }
