@@ -1,10 +1,50 @@
 ﻿@model Mooshak2.ViewModels.UserModel
 <!--Here we use the _Students layout from the Shared directory-->
+
 @{
     Layout = "~/Views/Shared/_Students.cshtml";
 }
+
 @{
-    ViewBag.Title = "Log In";
+    ViewBag.Title = "Students";
 }
 
-<p>THIS IS THE STUDENT </p>
+<div class="wrapper">
+    <header>
+        <img src="~/Content/Pictures/hr.gif" alt="hrlogo" id="hrlogo" height="100" width="100" />
+        <form>
+            <!--Textarea for notendanafn and afangi-->
+            <div class="inputbox1">
+                <textarea name="nodendanafn afangi" cols="20" rows="2" placeholder="Notendanafn Afangi"></textarea>
+            </div>
+
+            <!--Dropdown box for assignments-->
+            <div class="dropDown">
+                <select name="verkefni">
+                    <option>Enginn verkefni sem stendur</option>
+                    <option>Enginn verkefni sem stendur</option>
+                </select>
+            </div>
+
+            <!--Text/dropdown for assignments parts -->
+            <div class="verkefnahluti">
+                <textarea name="verkefnahluti" cols="20" rows="6" placeholder="Verkefni 1"></textarea>
+            </div>
+
+            <!--Upload file and submit takki-->
+            <div class="uploading" method="post">
+                <input type="file" name="user-song" /><br />
+                <input type="submit" value="Upload" class="takki" value="danni" />
+            </div>
+
+            <!--Logout takki-->
+            <div class="logout">
+                <input type="submit" value="Logout" class="logouttakki" />
+            </div>
+
+
+
+        </form>
+
+    </header>
+</div>
