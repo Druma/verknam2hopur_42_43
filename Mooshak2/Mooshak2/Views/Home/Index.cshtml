@@ -7,25 +7,28 @@
     ViewBag.Title = "Log In";
 }
 
-<div class="container">
-    <div id="login-wrapper" class="wrapper">
-        @using (Html.BeginForm("Index", "Student", FormMethod.Post, new { @class = "form-signin" }))
-        {
-            @Html.ValidationSummary(true, "Login failed. Check your login details");
-            <fieldset>
-                <!--<legend>Login Form</legend>-->
-                <img src="~/Content/Pictures/hr.gif" alt="hrlogo" id="hrlogo" />
-                <div>
-                    @Html.TextBoxFor(u => u.Username, new { @class = "form-control", placeholder = "Username", required = "", autofocus = "" })
-                    @Html.ValidationMessageFor(u => u.Username)
-                </div>
-                <div>
-                    @Html.PasswordFor(u => u.Password, new { @class = "form-control", name = "Password", placeholder = "Password", required = "" })
-                    @Html.ValidationMessageFor(u => u.Password)
-                </div>
-                <input type="submit" value="Log In" id="takki" class="btn btn-success" />
-            </fieldset>
 
-        }
-    </div>
-</div>
+@using (Html.BeginForm("Index", "Student", FormMethod.Post, new { @class = "form-signin" }))
+{
+    @Html.ValidationSummary(true, "Login failed. Check your login details");
+    <fieldset>
+
+        <!--<legend>Login Form</legend>-->
+
+        <img src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
+
+        <div>
+            @Html.TextBoxFor(u => u.Username, new { @class = "form-control", placeholder = "Username", required = "", autofocus = "" })
+            @Html.ValidationMessageFor(u => u.Username)
+        </div>
+
+        <div>
+            @Html.PasswordFor(u => u.Password, new { @class = "form-control", name = "Password", placeholder = "Password", required = "" })
+            @Html.ValidationMessageFor(u => u.Password)
+        </div>
+
+        <input type="submit" value="Log In" class="btn btn-success" />
+
+    </fieldset>
+
+}
