@@ -12,11 +12,11 @@ namespace Mooshak2
     using System;
     using System.Collections.Generic;
     
-    public partial class assignments
+    public partial class assignments2
     {
-        public assignments()
+        public assignments2()
         {
-            this.groups = new HashSet<groups>();
+            this.groups = new HashSet<groups2>();
         }
     
         public int ID { get; set; }
@@ -27,7 +27,7 @@ namespace Mooshak2
         public System.DateTime endDate { get; set; }
         public int courseID { get; set; }
     
-        public virtual courses courses { get; set; }
-        public virtual ICollection<groups> groups { get; set; }
+        public virtual courses2 courses { get; set; }
+        public virtual ICollection<groups2> groups { get; set; }
     }
 }

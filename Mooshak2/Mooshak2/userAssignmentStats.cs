@@ -12,7 +12,7 @@ namespace Mooshak2
     using System;
     using System.Collections.Generic;
     
-    public partial class userAssignmentStats
+    public partial class userAssignmentStats2
     {
         public int ID { get; set; }
         public int submissionCount { get; set; }
@@ -20,7 +20,7 @@ namespace Mooshak2
         public int userID { get; set; }
         public int assignmentPartID { get; set; }
     
-        public virtual assignmentParts assignmentParts { get; set; }
-        public virtual users users { get; set; }
+        public virtual assignmentParts2 assignmentParts { get; set; }
+        public virtual users2 users { get; set; }
     }
 }

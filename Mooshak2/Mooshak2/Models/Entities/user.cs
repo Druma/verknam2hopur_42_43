@@ -15,7 +15,7 @@ namespace Mooshak2
             studentCourses = new HashSet<studentCours>();
             teacherCourses = new HashSet<teacherCours>();
             userAssignmentStats = new HashSet<userAssignmentStat>();
-            userUploadedSolutions = new HashSet<userUploadedSolution>();
+            userUploadedSolutions = new HashSet<userUploadedSolution2>();
         }
 
         public int ID { get; set; }
@@ -46,6 +46,6 @@ namespace Mooshak2
         public virtual userType userType { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<userUploadedSolution> userUploadedSolutions { get; set; }
+        public virtual ICollection<userUploadedSolution2> userUploadedSolutions { get; set; }
     }
 }

@@ -12,15 +12,15 @@ namespace Mooshak2
     using System;
     using System.Collections.Generic;
     
-    public partial class users
+    public partial class users2
     {
-        public users()
+        public users2()
         {
-            this.groups = new HashSet<groups>();
-            this.studentCourses = new HashSet<studentCourses>();
-            this.teacherCourses = new HashSet<teacherCourses>();
-            this.userAssignmentStats = new HashSet<userAssignmentStats>();
-            this.userUploadedSolution = new HashSet<userUploadedSolution>();
+            this.groups = new HashSet<groups2>();
+            this.studentCourses = new HashSet<studentCourses2>();
+            this.teacherCourses = new HashSet<teacherCourses2>();
+            this.userAssignmentStats = new HashSet<userAssignmentStats2>();
+            this.userUploadedSolution = new HashSet<userUploadedSolution2>();
         }
     
         public int ID { get; set; }
@@ -29,11 +29,11 @@ namespace Mooshak2
         public string password { get; set; }
         public int userTypeID { get; set; }
     
-        public virtual ICollection<groups> groups { get; set; }
-        public virtual ICollection<studentCourses> studentCourses { get; set; }
-        public virtual ICollection<teacherCourses> teacherCourses { get; set; }
-        public virtual ICollection<userAssignmentStats> userAssignmentStats { get; set; }
-        public virtual userTypes userTypes { get; set; }
-        public virtual ICollection<userUploadedSolution> userUploadedSolution { get; set; }
+        public virtual ICollection<groups2> groups { get; set; }
+        public virtual ICollection<studentCourses2> studentCourses { get; set; }
+        public virtual ICollection<teacherCourses2> teacherCourses { get; set; }
+        public virtual ICollection<userAssignmentStats2> userAssignmentStats { get; set; }
+        public virtual userTypes2 userTypes { get; set; }
+        public virtual ICollection<userUploadedSolution2> userUploadedSolution { get; set; }
     }
 }

@@ -1,68 +1,71 @@
-﻿@{
-    ViewBag.Title = "Teachers";
+﻿@model IEnumerable<Mooshak2.ViewModels.StudentViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Masterpage.cshtml";
 }
 
-<h2>Teacher View</h2>
+@{
+    ViewBag.Title = "Teachers";
+}
+<header>
+    <div class="container">
+        <div class="row">
+            <img class="pull-left" src="~/Content/Pictures/hr.gif" />
+            <div class="col-sm-3 ">
+                <h5>Teacher Name</h5>
+                <select class="form-control" id="course">
+                    <option>Gaganaskipan</option>
+                    <option>Verklegt námskeið 2</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</header>
 
-<body>
-
-    <ul class="nav nav-tabs">
+<div class="container main-content">
+    <ul class="nav nav-tabs pull-left">
         <li class="active"><a data-toggle="tab" href="#settings">Settings</a></li>
         <li><a data-toggle="tab" href="#studentList">Student List</a></li>
     </ul>
 
     <div class="tab-content">
         <div id="settings" class="tab-pane fade in active">
-            <h3>Stillingar</h3>
-            <div class="col-md-4">
-                <img href="http://cadia.ru.is/images/RU_midjad_white2.gif" />
-                <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" />
-                <input type="text" value="Username" />
-                <select>
-                    <option value="" disabled selected>Course</option>
-                </select>
-                <input type="submit" value="Create new project" />
-                    
-                <form action="../Home/Index">
-                    <input type="submit" value="Logout" class="btn btn-default">
-                </form>
-            </div>
-
+            <h3>Settings</h3>
             <div class="col-md-8">
-                <h3>Verkefni</h3><!--Setja inn kóða til að setja rétt númer inn-->
-
-                <p>Verkefni hefst <span>    </span> Verkefni endar</p>
                 <form action="">
-                    <input type="datetime" placeholder="9/9/1999"/>
+                    <input type="text" placeholder="Verkefni 1">
+                    <p>Verkefni hefst</p>
+                    <p>Verkefni endar</p>
                     <input type="datetime" placeholder="9/9/1999" />
-                    <input type="submit" value="vista" class="btn btn-default" />               
+                    <input type="datetime" placeholder="9/9/1999" />
+                    <input type="submit" value="vista" class="btn btn-default" />
                     <input type="checkbox" value="Leyfa hópa" />
-                        <select>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
                     <input type="checkbox" value="Takmarks endurtekningar" />
-                        <select>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>5</option>
-                            <option>7</option>
-                            <option>10</option>
-                            <option>15</option>
-                            <option>20</option>
-                        </select>
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>5</option>
+                        <option>7</option>
+                        <option>10</option>
+                        <option>15</option>
+                        <option>20</option>
+                    </select>
                     <p>Fjöldi verkefnahluta</p>
-                        <select>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
                 </form>
 
                 <!--TODO: Code for dynamic display of Solution picks and project descriptions.-->
@@ -70,26 +73,23 @@
         </div>
 
         <div id="studentList" class="tab-pane fade">
-            <h3>Nemandalisti</h3>
+            <h3>Student List</h3>
             <div class="col-md-4">
                 <table>
                     <thead>
                         <tr>
-                            <th>Nemendur Valins Áfanga</th>
+                            <th>@Html.DisplayNameFor(Model => Model.Name)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @*@ foreach(ApplicationUser.RealName where Authorization = 1)
-                            {
-                            <tr>
-                                <td>
-                                    this.RealName;
-                                </td>
-                               <td>
-                                   this.SubmissionNumber;
-                               </td>
-                            </tr>
-                            } TODO: Finna almennilegan kóða til að sækja þetta*@
+                        <tr>
+                            <td>
+                                @foreach(var item in Model)
+                                {
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                }
+                            </td>
+                        </tr>
 
                     </tbody>
                 </table>
@@ -97,7 +97,4 @@
             </div>
         </div>
     </div>
-
-
-
-</body>
+</div>

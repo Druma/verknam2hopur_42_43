@@ -12,13 +12,13 @@ namespace Mooshak2
     using System;
     using System.Collections.Generic;
     
-    public partial class teacherCourses
+    public partial class teacherCourses2
     {
         public int ID { get; set; }
         public int userID { get; set; }
         public int courseID { get; set; }
     
-        public virtual courses courses { get; set; }
-        public virtual users users { get; set; }
+        public virtual courses2 courses { get; set; }
+        public virtual users2 users { get; set; }
     }
 }

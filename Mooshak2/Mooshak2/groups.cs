@@ -12,14 +12,14 @@ namespace Mooshak2
     using System;
     using System.Collections.Generic;
     
-    public partial class groups
+    public partial class groups2
     {
         public int ID { get; set; }
         public string name { get; set; }
         public int userID { get; set; }
         public int assignmentID { get; set; }
     
-        public virtual assignments assignments { get; set; }
-        public virtual users users { get; set; }
+        public virtual assignments2 assignments { get; set; }
+        public virtual users2 users { get; set; }
     }
 }

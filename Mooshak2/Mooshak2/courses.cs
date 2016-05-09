@@ -12,20 +12,20 @@ namespace Mooshak2
     using System;
     using System.Collections.Generic;
     
-    public partial class courses
+    public partial class courses2
     {
-        public courses()
+        public courses2()
         {
-            this.assignments = new HashSet<assignments>();
-            this.studentCourses = new HashSet<studentCourses>();
-            this.teacherCourses = new HashSet<teacherCourses>();
+            this.assignments = new HashSet<assignments2>();
+            this.studentCourses = new HashSet<studentCourses2>();
+            this.teacherCourses = new HashSet<teacherCourses2>();
         }
     
         public int ID { get; set; }
         public string name { get; set; }
     
-        public virtual ICollection<assignments> assignments { get; set; }
-        public virtual ICollection<studentCourses> studentCourses { get; set; }
-        public virtual ICollection<teacherCourses> teacherCourses { get; set; }
+        public virtual ICollection<assignments2> assignments { get; set; }
+        public virtual ICollection<studentCourses2> studentCourses { get; set; }
+        public virtual ICollection<teacherCourses2> teacherCourses { get; set; }
     }
 }

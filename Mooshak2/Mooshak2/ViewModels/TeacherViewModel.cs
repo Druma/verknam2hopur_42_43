@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Mooshak2.ViewModels
 {
-    public class TeacherViewModal
+    public class TeacherViewModel
     {
         public string Name { get; set; }
         public string Username { get; set; }

@@ -12,12 +12,12 @@ namespace Mooshak2
     using System;
     using System.Collections.Generic;
     
-    public partial class assignmentParts
+    public partial class assignmentParts2
     {
-        public assignmentParts()
+        public assignmentParts2()
         {
-            this.userAssignmentStats = new HashSet<userAssignmentStats>();
-            this.userUploadedSolution = new HashSet<userUploadedSolution>();
+            this.userAssignmentStats = new HashSet<userAssignmentStats2>();
+            this.userUploadedSolution = new HashSet<userUploadedSolution2>();
         }
     
         public int ID { get; set; }
@@ -25,7 +25,7 @@ namespace Mooshak2
         public string solutionFile { get; set; }
         public int assignmentID { get; set; }
     
-        public virtual ICollection<userAssignmentStats> userAssignmentStats { get; set; }
-        public virtual ICollection<userUploadedSolution> userUploadedSolution { get; set; }
+        public virtual ICollection<userAssignmentStats2> userAssignmentStats { get; set; }
+        public virtual ICollection<userUploadedSolution2> userUploadedSolution { get; set; }
     }
 }

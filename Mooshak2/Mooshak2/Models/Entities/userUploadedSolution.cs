@@ -7,7 +7,7 @@ namespace Mooshak2
     using System.Data.Entity.Spatial;
 
     [Table("userUploadedSolution")]
-    public partial class userUploadedSolution
+    public partial class userUploadedSolution2
     {
         public int ID { get; set; }
 

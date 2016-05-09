@@ -25,16 +25,16 @@ namespace Mooshak2
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<assignmentParts> assignmentParts { get; set; }
-        public virtual DbSet<assignments> assignments { get; set; }
-        public virtual DbSet<courses> courses { get; set; }
-        public virtual DbSet<groups> groups { get; set; }
-        public virtual DbSet<studentCourses> studentCourses { get; set; }
+        public virtual DbSet<assignmentParts2> assignmentParts { get; set; }
+        public virtual DbSet<assignments2> assignments { get; set; }
+        public virtual DbSet<courses2> courses { get; set; }
+        public virtual DbSet<groups2> groups { get; set; }
+        public virtual DbSet<studentCourses2> studentCourses { get; set; }
         public virtual DbSet<SystemUsers> SystemUsers { get; set; }
-        public virtual DbSet<teacherCourses> teacherCourses { get; set; }
-        public virtual DbSet<userAssignmentStats> userAssignmentStats { get; set; }
-        public virtual DbSet<users> users { get; set; }
-        public virtual DbSet<userTypes> userTypes { get; set; }
-        public virtual DbSet<userUploadedSolution> userUploadedSolution { get; set; }
+        public virtual DbSet<teacherCourses2> teacherCourses { get; set; }
+        public virtual DbSet<userAssignmentStats2> userAssignmentStats { get; set; }
+        public virtual DbSet<users2> users { get; set; }
+        public virtual DbSet<userTypes2> userTypes { get; set; }
+        public virtual DbSet<userUploadedSolution2> userUploadedSolution { get; set; }
     }
 }

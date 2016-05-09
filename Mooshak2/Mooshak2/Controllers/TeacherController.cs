@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mooshak2.Services;
+using Mooshak2.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,15 @@ namespace Mooshak2.Controllers
 {
     public class TeacherController : Controller
     {
+        private StudentService _studentService = new StudentService();
+        private dbContext _db = new dbContext();
         // GET: Teacher
         public ActionResult Index()
         {
-            return View();
+            var studentViewModel = new List<StudentViewModel>();
+            var viewModel = _studentService.getAllStudents();
+            studentViewModel = viewModel;
+            return View(viewModel);
         }
 
         // GET: Teacher/Details/5
@@ -77,7 +84,6 @@ namespace Mooshak2.Controllers
             try
             {
                 // TODO: Add delete logic here
-
                 return RedirectToAction("Index");
             }
             catch

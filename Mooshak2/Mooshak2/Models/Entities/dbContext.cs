@@ -21,7 +21,7 @@ namespace Mooshak2
         public virtual DbSet<userAssignmentStat> userAssignmentStats { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<userType> userTypes { get; set; }
-        public virtual DbSet<userUploadedSolution> userUploadedSolutions { get; set; }
+        public virtual DbSet<userUploadedSolution2> userUploadedSolutions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

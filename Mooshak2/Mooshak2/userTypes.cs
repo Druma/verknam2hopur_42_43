@@ -12,16 +12,16 @@ namespace Mooshak2
     using System;
     using System.Collections.Generic;
     
-    public partial class userTypes
+    public partial class userTypes2
     {
-        public userTypes()
+        public userTypes2()
         {
-            this.users = new HashSet<users>();
+            this.users = new HashSet<users2>();
         }
     
         public int ID { get; set; }
         public string type { get; set; }
     
-        public virtual ICollection<users> users { get; set; }
+        public virtual ICollection<users2> users { get; set; }
     }
 }

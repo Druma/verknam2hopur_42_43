@@ -6,28 +6,29 @@ namespace Mooshak2
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class assignmentPart
+    [Table("courses")]
+    public partial class course
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public assignmentPart()
+        public course()
         {
-            userAssignmentStats = new HashSet<userAssignmentStat>();
-            userUploadedSolutions = new HashSet<userUploadedSolution>();
+            assignments = new HashSet<assignment>();
+            studentCourses = new HashSet<studentCours>();
+            teacherCourses = new HashSet<teacherCours>();
         }
 
         public int ID { get; set; }
 
-        public string descriptoin { get; set; }
-
         [Required]
-        public string solutionFile { get; set; }
-
-        public int assignmentID { get; set; }
+        public string name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<userAssignmentStat> userAssignmentStats { get; set; }
+        public virtual ICollection<assignment> assignments { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<userUploadedSolution> userUploadedSolutions { get; set; }
+        public virtual ICollection<studentCours> studentCourses { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<teacherCours> teacherCourses { get; set; }
     }
 }
