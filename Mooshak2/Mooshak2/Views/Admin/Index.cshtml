@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Mooshak2.ViewModels.UserViewModel>
+
+@{
     ViewBag.Title = "Admins";
 }
 
@@ -24,18 +26,18 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Notendur HR</th>
+                                <th>@Html.DisplayNameFor(Model => Model.Name)</th>
                             </tr>
                         </thead>
                         <tbody>
-                             @*@ foreach(ApplicationUser.RealName where Authorization = 1)
-                             {
-                             <tr>
-                                 <td>
-                                     this.RealName;
-                                 </td>
-                             </tr>
-                             } TODO: Finna almennilegan kóða til að sækja þetta*@
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -135,7 +137,7 @@
                 </div>
 
                 <div class="col-md-4">
-                    <input type="submit">Tengja valda nemendur við valin áfanga</input>
+                    <input type="submit">Tengja valda nemendur við valin áfanga>
 
                     <table>
                         <thead>

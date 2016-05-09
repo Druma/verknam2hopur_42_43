@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mooshak2.Services;
+using Mooshak2.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,15 @@ namespace Mooshak2.Controllers
 {
     public class AdminController : Controller
     {
+        private UserService _userService = new UserService();
+        private dbContext _db = new dbContext();
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            var userViewModel = new List<UserViewModel>();
+            var viewModel = _userService.getAllUsers();
+            userViewModel = viewModel;
+            return View(viewModel);
         }
 
         // GET: Admin/Details/5
