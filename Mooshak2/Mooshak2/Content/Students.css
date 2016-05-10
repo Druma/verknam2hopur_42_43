@@ -15,9 +15,20 @@ header img {
     margin-right: 15px;
 }
 .navbar-header {width: 100%;}
-.navbar-header .logout h5 {
+
+.navbar-header .logout  {
     float: left;
     color: red;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.navbar-header .logout h5  {
+    float: left;
+    color: red;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    margin-right: 25px;
 }
 
 
@@ -29,3 +40,4 @@ header img {
     margin-top: 42px;
     background-color: #ddd;
 }
+
