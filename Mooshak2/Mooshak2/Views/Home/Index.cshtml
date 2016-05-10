@@ -1,14 +1,14 @@
 ﻿@model Mooshak2.ViewModels.UserModel
 <!--Here we use the _Login layout from the Shared directory-->
 @{
-    Layout = "~/Views/Shared/_Login.cshtml";
+    Layout = "~/Views/Shared/_Masterpage.cshtml";
 }
 @{
     ViewBag.Title = "Log In";
 }
 
 <div class="container">
-    <div class="wrapper">
+    <div id="login-wrapper" class="wrapper">
         @using (Html.BeginForm("Index", "Student", FormMethod.Post, new { @class = "form-signin" }))
         {
             @Html.ValidationSummary(true, "Login failed. Check your login details");
