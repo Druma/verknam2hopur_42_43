@@ -21,115 +21,122 @@
 	</div>
 </nav>
 
-<div class="container main-content">
-	<ul class="nav nav-tabs pull-left">
-		<li class="active"><a data-toggle="tab" href="#settings">Settings</a></li>
-		<li><a data-toggle="tab" href="#studentList">Student List</a></li>
-	</ul>
+<div class="container ">
+	<!-- row #1 : Tabs -->
+	<div class="row">
+		<div class="col-sm-12">
 
-	<div class="tab-content">
-		<div id="settings" class="tab-pane fade in active">
-			<h3>Settings</h3>
-			<div class="col-md-8">
-				<form action="">
-					<input type="text" placeholder="Assignment 1">
-					<br />
-					<br />
-					<label for="assignmentStart">Assignment Starts</label>
-					<br />
-					<input type="date" id="assignmentStart" placeholder="9/9/1999" />
-					<br />
-					<br />
-					<label for="assignmentEnd">Assignment Ends</label>
-					<br />
-					<input type="date" id="assignmentEnd" placeholder="9/9/1999" />
-					<br />
+			<ul class="nav nav-tabs">
+				<li>
+					<a data-toggle="tab" href="#settings">Settings</a>
+				</li>
+				<li>
+					<a data-toggle="tab" href="#studentList">Student List</a>
+				</li>
+			</ul>
 
-					<br />
-
-					<label for="allowGroups">Allow Groups</label>
-					<input type="checkbox" id="allowGroups" value="allowGroups" />
-					<br />
-					<select>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
-					<br />
-					<label for="NumOfSubmission">Number of Submissions</label>
-					<input type="checkbox" id="NumOfSubmission" value="NumOfSubmission" />
-					<br />
-					<select>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>5</option>
-						<option>7</option>
-						<option>10</option>
-						<option>15</option>
-						<option>20</option>
-					</select>
-					<br />
-					<br />
-					<lable>Assignment Parts</lable>
-					<br />
-					<select>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
-				</form>
-
-				<!--TODO: Code for dynamic display of Solution picks and project descriptions.-->
-			</div>
-		</div>
-
-		<div id="studentList" class="tab-pane fade">
-			<h3>Student List</h3>
-			<div class="col-md-4">
-				@*<table>
-					<thead>
-						<tr>
-							<th>
-								@Html.DisplayNameFor(Model => Model.Name)
-							</th>
-							<th>
-								@Html.DisplayNameFor(Model => Model.Username)
-							</th>
-							<th>
-								@Html.DisplayNameFor(Model => Model.Group)
-							</th>
-							<th>
-								@Html.DisplayNameFor(Model => Model.Submission)
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach (var item in Model)
-						{
-							<tr>
-								<td>
-									@Html.DisplayFor(modelItem => item.Name)
-								</td>
-								<td>
-									@Html.DisplayFor(modelItem => item.Username)
-								</td>
-								<td>
-									@Html.DisplayFor(modelItem => item.Group)
-								</td>
-								<td>
-									@Html.DisplayFor(modelItem => item.Submission)
-								</td>
-							</tr>
-						}
-					</tbody>
-				</table>*@
-
-			</div>
 		</div>
 	</div>
+	<!-- row #2 : Tabed Content-->
+	<div class="row">
+		<div class="col-sm-12">
+
+			<div class="tab-content">
+
+				<div id="settings" class="tab-pane fade in active" > <!-- Tab #1 : START -->
+
+					<h3>Settings</h3>
+					<form action="" class="no-border">
+						<input type="text" placeholder="Assignment 1">
+
+						<label for="assignmentStart">Assignment Starts</label>
+						<input type="date" id="assignmentStart" placeholder="9/9/1999" />
+
+						<label for="assignmentEnd">Assignment Ends</label>
+						<input type="date" id="assignmentEnd" placeholder="9/9/1999" />
+
+						<label for="allowGroups">Allow Groups</label>
+						<input type="checkbox" id="allowGroups" value="allowGroups" />
+						<select>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+
+						<label for="NumOfSubmission">Number of Submissions</label>
+						<input type="checkbox" id="NumOfSubmission" value="NumOfSubmission" />
+						<select>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>5</option>
+							<option>7</option>
+							<option>10</option>
+							<option>15</option>
+							<option>20</option>
+						</select>
+
+						<lable>Assignment Parts</lable>
+						<select>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+
+					</form> <!-- END of Form -->
+					<!--TODO: Code for dynamic display of Solution picks and project descriptions.-->
+
+				</div> <!-- Tab #1 : END -->
+
+				<div id="studentList" class="tab-pane fade"> <!-- Tab #2 : START -->
+					
+					<h3>Student List</h3>
+						@*<table>
+								<thead>
+									<tr>
+										<th>
+											@Html.DisplayNameFor(Model => Model.Name)
+										</th>
+										<th>
+											@Html.DisplayNameFor(Model => Model.Username)
+										</th>
+										<th>
+											@Html.DisplayNameFor(Model => Model.Group)
+										</th>
+										<th>
+											@Html.DisplayNameFor(Model => Model.Submission)
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var item in Model)
+									{
+										<tr>
+											<td>
+												@Html.DisplayFor(modelItem => item.Name)
+											</td>
+											<td>
+												@Html.DisplayFor(modelItem => item.Username)
+											</td>
+											<td>
+												@Html.DisplayFor(modelItem => item.Group)
+											</td>
+											<td>
+												@Html.DisplayFor(modelItem => item.Submission)
+											</td>
+										</tr>
+									}
+								</tbody>
+						</table>*@
+				</div> <!-- Tab #2 : END -->
+			
+			</div>
+
+		</div>
+	</div> 
+
 </div>
