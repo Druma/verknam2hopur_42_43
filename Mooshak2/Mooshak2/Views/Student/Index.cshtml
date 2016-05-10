@@ -9,44 +9,39 @@
     ViewBag.Title = "Students";
 }
 
+<nav class="navbar navbar-inverse navbar-static-top">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-			<img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
-            <div class="logout pull-right">
-                <h5 class="">Daniel Freyr Sigurðsson</h5>
-				<h6>Gagnaskipan</h6>
-                <button class="btn btn-primary">Útskrá</button>
-            </div>
-        </div>
-        
-    </div>
+	<div class="row">
+		<div class="col-sm-6" >
+			<img src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
+		</div>
+		<div class="col-sm-6 text-center">
+			<h5 class="">Daniel Freyr Sigurðsson</h5>
+			<h6>Gagnaskipan</h6>
+			<button class="btn btn-primary">Útskrá</button>
+		</div>
+	</div>
 </nav>
-
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-2">
-                @Html.DropDownListFor(model => model.Username, Model.AvailableAssignments, new { @class = "form-control" })
-            </div>
-            <div class="col-sm-2">
-                <select class="form-control" id="project">
-                    <option>Lab 1</option>
-                    <option>Lab 2</option>
-                </select>
-            </div>
-            <div class="col-sm-2">
-                <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
-                <div class="fileUpload btn btn-primary">
-                    <span>Upload</span>
-                    <input id="uploadBtn" type="file" class="upload" />
-                </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            @Html.DropDownListFor(model => model.Username, Model.AvailableAssignments, new { @class = "form-control" })
+        </div>
+        <div class="col-sm-2">
+            <select class="form-control" id="project">
+                <option>Lab 1</option>
+                <option>Lab 2</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+            <div class="fileUpload btn btn-primary">
+                <span>Upload</span>
+                <input id="uploadBtn" type="file" class="upload" />
             </div>
         </div>
     </div>
-</header>
-
+</div>
 <div class="container main-content">
     <ul class="nav nav-tabs pull-right">
         <li class="active"><a data-toggle="tab" href="#home">Verkefnalýsing</a></li>
