@@ -26,3 +26,15 @@ textarea
 {
     max-width: 17.5em;
 }
+
+/* custom stuff */
+
+input[type="file"]
+{
+	display: none;
+}
+
+.form-control
+{
+	margin: 1em auto;
+}
