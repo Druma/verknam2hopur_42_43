@@ -1,5 +1,4 @@
 ﻿@model Mooshak2.ViewModels.StudentViewModel
-<!--Here we use the _Students layout from the Shared directory-->
 
 @{
     Layout = "~/Views/Shared/_Masterpage.cshtml";
@@ -10,17 +9,21 @@
 }
 
 
-<header class="navbar navbar-inverse navbar-static-top">
-	<div class="row">
-		<div class="col-sm-6" >
-			<img src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
-		</div>
-		<div class="col-sm-6 text-center">
-			<h5 class="">Daniel Freyr Sigurðsson</h5>
-			<h6>Gagnaskipan</h6>
-			<button class="btn btn-primary">Útskrá</button>
+<header class="navbar-inverse navbar-static-top">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<img src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
+			</div>
+			<div class="col-sm-6 text-center">
+				<h5 class="">Daniel Freyr Sigurðsson</h5>
+				<h6>Gagnaskipan</h6>
+				<button class="btn btn-primary">Útskrá</button>
+			</div>
 		</div>
 	</div>
+
 </header>
 <div class="container">
 

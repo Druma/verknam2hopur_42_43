@@ -9,16 +9,20 @@
     ViewBag.Title = "Teachers";
 }
 <nav class="navbar navbar-inverse navbar-static-top">
-	<div class="row">
-		<div class="col-sm-6">
-			<img src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
-		</div>
-		<div class="col-sm-6 text-center" >
-			<h5>Teacher Name</h5>
-			@Html.DropDownListFor(Model => Model.CourseID, Model.Courses, "Choose...")
-			<button class="btn btn-primary">Útskrá</button>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<img src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
+			</div>
+			<div class="col-sm-6 text-center">
+				<h5>Teacher Name</h5>
+				@Html.DropDownListFor(Model => Model.CourseID, Model.Courses, "Choose...")
+				<button class="btn btn-primary">Útskrá</button>
+			</div>
 		</div>
 	</div>
+
 </nav>
 
 <div class="container ">
