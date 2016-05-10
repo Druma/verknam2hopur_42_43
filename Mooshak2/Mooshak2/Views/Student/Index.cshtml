@@ -9,8 +9,8 @@
     ViewBag.Title = "Students";
 }
 
-<nav class="navbar navbar-inverse navbar-static-top">
 
+<header class="navbar navbar-inverse navbar-static-top">
 	<div class="row">
 		<div class="col-sm-6" >
 			<img src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
@@ -21,46 +21,78 @@
 			<button class="btn btn-primary">Útskrá</button>
 		</div>
 	</div>
-</nav>
+</header>
 <div class="container">
-    <div class="row">
-        <div class="col-sm-2">
+
+	<!-- row #1 : dropdown and file upload -->
+    <div class="row text-center">
+        <div class="col-sm-4">
             @Html.DropDownListFor(model => model.Username, Model.AvailableAssignments, new { @class = "form-control" })
         </div>
-        <div class="col-sm-2">
+
+        <div class="col-sm-4">
             <select class="form-control" id="project">
                 <option>Lab 1</option>
                 <option>Lab 2</option>
             </select>
         </div>
-        <div class="col-sm-2">
-            <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
-            <div class="fileUpload btn btn-primary">
-                <span>Upload</span>
-                <input id="uploadBtn" type="file" class="upload" />
+
+        <div class="col-sm-4">
+            <div class="btn btn-primary">
+                <input type="file" />
+				Upload
             </div>
         </div>
     </div>
-</div>
-<div class="container main-content">
-    <ul class="nav nav-tabs pull-right">
-        <li class="active"><a data-toggle="tab" href="#home">Verkefnalýsing</a></li>
-        <li><a data-toggle="tab" href="#menu1">Innsendur Kóði</a></li>
-        <li><a data-toggle="tab" href="#menu2">Niðurstaða Lausnar</a></li>
-    </ul>
 
-    <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
-            <h3>Description</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div id="menu1" class="tab-pane fade">
-            <h3>Verkefnalysing</h3>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <div id="menu2" class="tab-pane fade">
-            <h3>Menu 2555</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-        </div>
-    </div>
+	<!-- row #2 : Tabs -->
+	<div class="row">
+		<div class="col-sm-12">
+
+			<ul class="nav nav-tabs">
+				<li>
+					<a data-toggle="tab" href="#home">Verkefnalýsing</a>
+				</li>
+				<li>
+					<a data-toggle="tab" href="#menu1">Innsendur Kóði</a>
+				</li>
+				<li>
+					<a data-toggle="tab" href="#menu2">Niðurstaða Lausnar</a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+	<!-- row #3 : Tabed Content -->
+	<div class="row">
+		<div class="col-sm-12">
+
+			<div class="tab-content">
+				<div id="home" class="tab-pane fade in active">
+					<h3>Description</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+				</div>
+
+				<div id="menu1" class="tab-pane fade">
+					<h3>Verkefnalysing</h3>
+					<p>
+						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</p>
+				</div>
+
+				<div id="menu2" class="tab-pane fade">
+					<h3>Menu 2555</h3>
+					<p>
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+					</p>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
 </div>
