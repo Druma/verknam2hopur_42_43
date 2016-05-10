@@ -1,6 +1,10 @@
 ﻿@model IEnumerable<Mooshak2.ViewModels.UserViewModel>
 
 @{
+    Layout = "~/Views/Shared/_AdminMasterpage.cshtml";
+}
+
+@{
     ViewBag.Title = "Admins";
 }
 
@@ -12,11 +16,13 @@
     <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" />
     <input type="text" value="Notandanafn" />
 
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">Notendur</a></li>
-        <li><a data-toggle="tab" href="#menu1">Villuboð</a></li>
-        <li><a data-toggle="tab" href="#menu2">Áfangar</a></li>
-    </ul>
+    @*<ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" id="link-tabA" href="#home">Notendur</a></li>
+        <li><a data-toggle="tab" id="link-tabB" href="@Url.Action()">userwindex</a></li>
+        <li><a data-toggle="tab" id="link-tabC" href="#menu1">Villuboð</a></li>
+        <li><a data-toggle="tab" id="link-tabD" href="#menu2">Áfangar</a></li>
+        <li><a data-toggle="tab" id="link-tabE" href="@Url.Action("Courses", "AdminController")"> test</a></li>
+    </ul>*@
 
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
@@ -70,96 +76,16 @@
                 </div>
             </div>
         </div>
-        <div id="menu1" class="tab-pane fade">
+        @*<div id="menu1" class="tab-pane fade">
             <h3>Villuboð</h3>
             <img href="http://cadia.ru.is/images/RU_midjad_white2.gif" />
             <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" />
             <input type="text" value="" placeholder="Notandanafn"/>
 
-            @*TODO: Put code to find errors to report*@
+            TODO: Put code to find errors to report
         </div>
 
-        <div id="menu2" class="tab-pane fade">
-            <h3>Áfangar</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <input type="submit" value="Stofna nýjan áfanga" />
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Stofnaðir Áfangar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Forritun</td>
-                            </tr>
-                            <tr>
-                                <td>Gagnaskipan</td>
-                            </tr>
-                            <tr>
-                                <td>Python</td>
-                            </tr>
-                            <tr>
-                                <td>Tölvuhögun</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <select id="kennaraval">
-                        <option></option>
-                        <option></option>
-                    </select>
-                </div>
-
-                <div class="col-md-4">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nemendur Valins Áfanga</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             @*@ foreach(ApplicationUser.RealName where Authorization = 1)
-                             {
-                             <tr>
-                                 <td>
-                                     this.RealName;
-                                 </td>
-                             </tr>
-                             } TODO: Finna almennilegan kóða til að sækja þetta*@
-
-                        </tbody>
-                    </table>
-
-                    <input type="submit" value="Eyða völdum nemendum úr áfanganum" />
-
-                </div>
-
-                <div class="col-md-4">
-                    <input type="submit">Tengja valda nemendur við valin áfanga>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Notendur Mooshak</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             @*@ foreach(ApplicationUser.RealName where Authorization = 1)
-                             {
-                             <tr>
-                                 <td>
-                                     this.RealName;
-                                 </td>
-                             </tr>
-                             } TODO: Finna almennilegan kóða til að sækja þetta*@
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        
     </div>
     
     <div class="row">
@@ -171,14 +97,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                     @*@ foreach(ApplicationUser.RealName where Authorization = 1)
+                     @ foreach(ApplicationUser.RealName where Authorization = 1)
                      {
                      <tr>
                          <td>
                              this.RealName;
                          </td>
                      </tr>
-                     } TODO: Finna almennilegan kóða til að sækja þetta*@
+                     } TODO: Finna almennilegan kóða til að sækja þetta
                 </tbody>
             </table>
         </div>
@@ -198,17 +124,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                     @*@ foreach(ApplicationUser.RealName where Authorization = 1)
+                     @ foreach(ApplicationUser.RealName where Authorization = 1)
                      {
                      <tr>
                          <td>
                              this.RealName;
                          </td>
                      </tr>
-                     } TODO: Finna almennilegan kóða til að sækja þetta*@
+                     } TODO: Finna almennilegan kóða til að sækja þetta
                 </tbody>
             </table>
-        </div>
+        </div>*@
     </div>
 
     <form action="www.ru.is">

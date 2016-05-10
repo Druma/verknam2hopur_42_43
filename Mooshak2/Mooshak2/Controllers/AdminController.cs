@@ -11,6 +11,7 @@ namespace Mooshak2.Controllers
     public class AdminController : Controller
     {
         private UserService _userService = new UserService();
+        private CoursesService _coursesService = new CoursesService();
         private dbContext _db = new dbContext();
         // GET: Admin
         public ActionResult Index()
@@ -22,9 +23,12 @@ namespace Mooshak2.Controllers
         }
 
         // GET: Admin/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Courses()
         {
-            return View();
+            var coursesViewModel = new List<CoursesViewModel>();
+            var viewModel = _coursesService.getAllCourses();
+            coursesViewModel = viewModel;
+            return View(viewModel);
         }
 
         // GET: Admin/Create

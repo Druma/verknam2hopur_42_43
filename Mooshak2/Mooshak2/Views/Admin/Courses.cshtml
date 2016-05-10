@@ -1,7 +1,10 @@
 ﻿@model IEnumerable<Mooshak2.ViewModels.CoursesViewModel>
 
 @{
-    ViewBag.Title = "Courses";
+    Layout = "~/Views/Shared/_AdminMasterpage.cshtml";
+}
+@{
+    ViewBag.Title = "Admins";
 }
 
 <h2>Courses</h2>
@@ -12,19 +15,35 @@
     <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" />
     <input type="text" value="Notandanafn" />
 
-    <ul class="nav nav-tabs">
+    @*<ul class="nav nav-tabs">
         <li><a data-toggle="tab" href="@Url.Action("Index", "AdminController")">Notendur</a></li>
         <li><a data-toggle="tab" href="#menu1">Villuboð</a></li>
         <li><a data-toggle="tab" href="#menu2">Áfangar</a></li>
         <li class="active"><a data-toggle="tab" href="@Url.Action("Courses", "AdminController")"> test2</a></li>
-    </ul>
+    </ul>*@
 
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-            <h3>Notendur</h3>
+            <h3>Áfangar</h3>
             <div class="row">
                 <div class="col-md-4">
-                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(Model => Model.Name)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
                 
                 
