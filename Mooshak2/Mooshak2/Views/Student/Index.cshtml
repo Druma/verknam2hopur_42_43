@@ -13,8 +13,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
+			<img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
             <div class="logout pull-right">
                 <h5 class="">Daniel Freyr Sigurðsson</h5>
+				<h6>Gagnaskipan</h6>
                 <button class="btn btn-primary">Útskrá</button>
             </div>
         </div>
@@ -25,11 +27,6 @@
 <header>
     <div class="container">
         <div class="row">
-            <img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100"/>
-            <div class="col-sm-3 ">
-                <h5>Daniel Freyr Sigurðsson</h5>
-                <h6>Gagnaskipan</h6>
-            </div>
             <div class="col-sm-2">
                 @Html.DropDownListFor(model => model.Username, Model.AvailableAssignments, new { @class = "form-control" })
             </div>
