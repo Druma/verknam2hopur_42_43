@@ -8,88 +8,95 @@ using System.Web.Mvc;
 
 namespace Mooshak2.Controllers
 {
-    public class TeacherController : Controller
-    {
-        private StudentService _studentService = new StudentService();
-        private dbContext _db = new dbContext();
-        // GET: Teacher
-        public ActionResult Index()
-        {
-            var studentViewModel = new List<StudentViewModel>();
-            var viewModel = _studentService.getAllStudents();
-            studentViewModel = viewModel;
-            return View(viewModel);
-        }
+	public class TeacherController : Controller
+	{
+		private TeacherService _teacherService = new TeacherService();
+		private dbContext _db = new dbContext();
+		// GET: Teacher
+		public ActionResult Index()
+		{
+			//var students = new List<TeacherViewModel>();
+			//students = _teacherService.getStudentsInCourse("Verklegt Námskeið 2");
+			//return View(students);
 
-        // GET: Teacher/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+			var model = new TeacherViewModel
+			{
+				Courses = new SelectList(_teacherService.getAllCourses(), "CourseID", "Course")
+			};
+			return View(model);
+		}
 
-        // GET: Teacher/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+		// GET: Teacher/Details/5
+		public ActionResult Details()
+		{
+			ViewBag.Message = "Your application description page.";
+			return View();
+		}
 
-        // POST: Teacher/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
+		// GET: Teacher/Create
+		public ActionResult Create()
+		{
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+			return View();
+		}
 
-        // GET: Teacher/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+		// POST: Teacher/Create
+		[HttpPost]
+		public ActionResult Create(FormCollection collection)
+		{
+			try
+			{
+				// TODO: Add insert logic here
 
-        // POST: Teacher/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+				return RedirectToAction("Index");
+			}
+			catch
+			{
+				return View();
+			}
+		}
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+		// GET: Teacher/Edit/5
+		public ActionResult Edit(int id)
+		{
+			return View();
+		}
 
-        // GET: Teacher/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+		// POST: Teacher/Edit/5
+		[HttpPost]
+		public ActionResult Edit(int id, FormCollection collection)
+		{
+			try
+			{
+				// TODO: Add update logic here
 
-        // POST: Teacher/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-    }
+				return RedirectToAction("Index");
+			}
+			catch
+			{
+				return View();
+			}
+		}
+
+		// GET: Teacher/Delete/5
+		public ActionResult Delete(int id)
+		{
+			return View();
+		}
+
+		// POST: Teacher/Delete/5
+		[HttpPost]
+		public ActionResult Delete(int id, FormCollection collection)
+		{
+			try
+			{
+				// TODO: Add delete logic here
+				return RedirectToAction("Index");
+			}
+			catch
+			{
+				return View();
+			}
+		}
+	}
 }
