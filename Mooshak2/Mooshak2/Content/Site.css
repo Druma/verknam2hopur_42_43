@@ -38,3 +38,8 @@ input[type="file"]
 {
 	margin: 1em auto;
 }
+
+.no-border
+{
+	border: none;
+}
