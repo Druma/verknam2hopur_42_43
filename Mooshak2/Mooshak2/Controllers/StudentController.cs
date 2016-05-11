@@ -20,9 +20,20 @@ namespace Mooshak2.Controllers
             StudentViewModel model = new StudentViewModel();
             model.AvailableAssignments = _studentService.GetAvailableAssignments();
             model.AvailableSubAssignments = _studentService.GetAvailableSubAssignments();
-          //  var viewModel = _studentService.getAllStudents();
-          //  studentViewModel.Name = viewModel.ToString();
-            return View(model); //studentViewModel
+            
+            return View(model);
+        }
+
+        // /Student/GetAssignmentParts?Id=2
+        [HttpGet]
+        public ActionResult GetAssignmentParts(int Id)
+        {
+            StudentService gaur = new StudentService();
+
+            List<SelectListItem> Listi = gaur.SubAssignmentsById(Id);
+
+            
+            return Json(Listi, JsonRequestBehavior.AllowGet);
         }
 
         

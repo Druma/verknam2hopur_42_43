@@ -58,6 +58,18 @@ namespace Mooshak2.Services
 
             return SubAssignments;
         }
+
+        public List<SelectListItem> SubAssignmentsById(int Id)
+        {
+            List<SelectListItem> SubAssignments = new List<SelectListItem>();
+
+            _db.assignmentParts.Where(p => p.assignmentID == Id).ToList().ForEach(x =>
+            {
+                SubAssignments.Add(new SelectListItem() { Value = x.ID.ToString(), Text = x.descriptoin });
+            });
+
+            return SubAssignments;
+        }
         
 
     }
