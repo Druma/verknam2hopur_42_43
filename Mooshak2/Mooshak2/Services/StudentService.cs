@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Mooshak2.Services
 {
@@ -29,5 +30,35 @@ namespace Mooshak2.Services
 
             return result;
         }
+
+        public List<SelectListItem> GetAvailableAssignments()
+        {
+            List<SelectListItem> assignments = new List<SelectListItem>();
+
+            assignments.Add(new SelectListItem() { Value = "", Text = "Assignments - " });
+
+            _db.assignments.ToList().ForEach((x) =>
+            {
+                assignments.Add(new SelectListItem() { Value = x.ID.ToString(), Text = x.name });
+            });
+
+            return assignments;
+        }
+
+        public List<SelectListItem> GetAvailableSubAssignments()
+        {
+            List<SelectListItem> SubAssignments = new List<SelectListItem>();
+
+            SubAssignments.Add(new SelectListItem() { Value = "", Text = "Assignments - " });
+
+            _db.assignments.ToList().ForEach((x) =>
+            {
+                SubAssignments.Add(new SelectListItem() { Value = x.ID.ToString(), Text = x.name });
+            });
+
+            return SubAssignments;
+        }
+        
+
     }
 }

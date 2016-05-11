@@ -1,4 +1,4 @@
-﻿@model Mooshak2.ViewModels.UserModel
+﻿@model Mooshak2.ViewModels.StudentViewModel
 <!--Here we use the _Students layout from the Shared directory-->
 
 @{
@@ -31,19 +31,20 @@
                 <h6>Gagnaskipan</h6>
             </div>
             <div class="col-sm-2">
-                <select class="form-control" id="project_part">
-                    <option>Verkefnahluti 1</option>
-                    <option>Verkefnahluti 2</option>
-                    <option>Verkefnahluti 3</option>
-                    <option>Verkefnahluti 4</option>
-                    <option>Verkefnahluti 5</option>
-                </select>
+                @Html.DropDownListFor(model => model.Username, Model.AvailableAssignments, new { @class = "form-control" })
             </div>
             <div class="col-sm-2">
                 <select class="form-control" id="project">
                     <option>Lab 1</option>
                     <option>Lab 2</option>
                 </select>
+            </div>
+            <div class="col-sm-2">
+                <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+                <div class="fileUpload btn btn-primary">
+                    <span>Upload</span>
+                    <input id="uploadBtn" type="file" class="upload" />
+                </div>
             </div>
         </div>
     </div>
@@ -71,7 +72,3 @@
         </div>
     </div>
 </div>
-
-    
-
-

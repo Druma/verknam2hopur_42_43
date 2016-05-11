@@ -12,13 +12,19 @@ namespace Mooshak2.Controllers
     {
         private StudentService _studentService = new StudentService();
 
+        private dbContext _db = new dbContext();
+
         // GET: Student
         public ActionResult Index()
         {
-           // StudentViewModel studentViewModel = new StudentViewModel();
+            StudentViewModel model = new StudentViewModel();
+            model.AvailableAssignments = _studentService.GetAvailableAssignments();
+            model.AvailableSubAssignments = _studentService.GetAvailableSubAssignments();
           //  var viewModel = _studentService.getAllStudents();
           //  studentViewModel.Name = viewModel.ToString();
-            return View(); //studentViewModel
+            return View(model); //studentViewModel
         }
+
+        
     }
 }
