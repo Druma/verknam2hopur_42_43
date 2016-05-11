@@ -1,7 +1,7 @@
-﻿body
+﻿html, body
 {
-    padding-top: 3.125em;
-    padding-bottom: 1.25em;
+    margin: 0px;
+	padding: 0px;
 }
 
 /* Set padding to keep content from hitting the edges */
