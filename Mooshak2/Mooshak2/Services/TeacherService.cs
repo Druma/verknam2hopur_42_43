@@ -83,20 +83,11 @@ namespace Mooshak2.Services
 			return result;
 		}
 
-		//public List<TeacherViewModel> getAllCourses()
-		//{
-		//	var courses = (from c in _db.courses
-		//				   select c).Select(x => new TeacherViewModel
-		//				   {
-		//					   Course = x.name
-		//				   }).ToList();
-
-		//	return courses;
-		//}
-
-		public List<TeacherViewModel> getAllCourses()
+		public List<TeacherViewModel> getTeacherCoursesByID(int teacherID)
 		{
-			var courses = (from c in _db.courses
+			var courses = (from tc in _db.teacherCourses
+						   join c in _db.courses on tc.courseID equals c.ID
+						   where tc.userID == teacherID
 						   select c).Select(x => new TeacherViewModel
 						   {
 							   CourseID = x.ID,
@@ -104,6 +95,24 @@ namespace Mooshak2.Services
 						   }).ToList();
 
 			return courses;
+		}
+
+		public void addAssignment(AssignmentViewModel newAssignment)
+		{
+			using (var context = new dbContext())
+			{
+				assignment model = new assignment
+				{
+					name = newAssignment.Name,
+					maxSubmisions = newAssignment.MaxSubmissions,
+					groupSize = newAssignment.GroupSize,
+					startDate = newAssignment.AssignmentStart,
+					endDate = newAssignment.AssignmentEnd,
+					courseID = newAssignment.CourseID
+				};
+				context.assignments.Add(model);
+				context.SaveChanges();
+			}
 		}
 	}
 }

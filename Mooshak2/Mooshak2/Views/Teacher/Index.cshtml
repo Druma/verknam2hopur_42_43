@@ -1,5 +1,5 @@
 ﻿@*@model IEnumerable<Mooshak2.ViewModels.TeacherViewModel>*@
-@model Mooshak2.ViewModels.TeacherViewModel
+@model Mooshak2.ViewModels.AssignmentViewModel
 
 @{
     Layout = "~/Views/Shared/_Masterpage.cshtml";
@@ -17,7 +17,6 @@
 			</div>
 			<div class="col-xs-6 text-center">
 				<h5>Teacher Name</h5>
-				@Html.DropDownListFor(Model => Model.CourseID, Model.Courses, "Choose...")
 				<button class="btn btn-primary">Útskrá</button>
 			</div>
 		</div>
@@ -50,52 +49,65 @@
 				<div id="settings" class="tab-pane fade in active" > <!-- Tab #1 : START -->
 
 					<h3>Settings</h3>
-					<form action="" class="no-border">
-						<input type="text" placeholder="Assignment 1">
+					@using (Html.BeginForm("Create", "Teacher", FormMethod.Post, new { id = "assignmentForm" }))
+					{
+						@Html.ValidationSummary(true, "Choose Course Create a Assignment For");
+
+						@Html.DropDownListFor(Model => Model.CourseID, Model.Courses, "Choose...", new { @class = "form-control", required = "" })
+						@Html.ValidationMessageFor(Model => Model.CourseID);
+
+						@Html.TextBoxFor(Model => Model.Name, new { @class = "form-control", placeholder = "Assignment 1", required = "" })
+						@Html.ValidationMessageFor(Model => Model.Name);
 
 						<label for="assignmentStart">Assignment Starts</label>
-						<input type="date" id="assignmentStart" placeholder="9/9/1999" />
-
+						<input type="datetime-local" id="assignmentStart" class="form-control" placeholder="9/9/1999" />
+						<br />
 						<label for="assignmentEnd">Assignment Ends</label>
-						<input type="date" id="assignmentEnd" placeholder="9/9/1999" />
-
+						<input type="datetime-local" id="assignmentEnd" class="form-control" placeholder="9/9/1999" />
+						<br />
 						<label for="allowGroups">Allow Groups</label>
-						<input type="checkbox" id="allowGroups" value="allowGroups" />
-						<select>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+						<input type="checkbox" id="allowGroups" value="allowGroups" onclick="validate()" />
+						<br />
+						<select name="groupSize" id="groupSize" disabled>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
 						</select>
-                        
-                        <p></p>
-
+						<br />
 						<label for="NumOfSubmission">Number of Submissions</label>
-						<input type="checkbox" id="NumOfSubmission" value="NumOfSubmission" />
-						<select>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>5</option>
-							<option>7</option>
-							<option>10</option>
-							<option>15</option>
-							<option>20</option>
+						<input type="checkbox" id="NumOfSubmission" value="NumOfSubmission" onclick="validate()" />
+						<br />
+						<select name="submissionNumber" id="submissionNumber" disabled>
+							<option value="10">10</option>
+							<option value="20">20</option>
+							<option value="30">30</option>
+							<option value="40">40</option>
+							<option value="50">50</option>
+							<option value="60">60</option>
+							<option value="70">70</option>
+							<option value="80">80</option>
+							<option value="90">90</option>
+							<option value="100">100</option>
 						</select>
-
-                        <p></p>
-
-						<p><b>Assignment Parts</b></p>
-						<select>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+						<br />
+						<lable>Assignment Parts</lable>
+						<br />
+						<select name="assignmentParts" id="assignmentParts">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
 						</select>
-
-					</form> <!-- END of Form -->
+						<br />
+						<input type="button" id="btnSave" value="Create" />
+					}
 					<!--TODO: Code for dynamic display of Solution picks and project descriptions.-->
 
 				</div> <!-- Tab #1 : END -->

@@ -19,9 +19,9 @@ namespace Mooshak2.Controllers
 			//students = _teacherService.getStudentsInCourse("Verklegt Námskeið 2");
 			//return View(students);
 
-			var model = new TeacherViewModel
+			var model = new AssignmentViewModel
 			{
-				Courses = new SelectList(_teacherService.getAllCourses(), "CourseID", "Course")
+				Courses = new SelectList(_teacherService.getTeacherCoursesByID(2), "CourseID", "Course")
 			};
 			return View(model);
 		}
@@ -41,62 +41,28 @@ namespace Mooshak2.Controllers
 		}
 
 		// POST: Teacher/Create
-		[HttpPost]
-		public ActionResult Create(FormCollection collection)
-		{
-			try
-			{
-				// TODO: Add insert logic here
+		//[HttpPost]
+		//public ActionResult Create([Bind(Include = "Name,MaxSubmissions,GroupSize,AssignmentStart,AssignmentEnd,CourseID")] assignment assignment)
+		//{
+		//	if (ModelState.IsValid)
+		//	{
+		//		_db.assignments.Add(assignment);
+		//		_db.SaveChanges();
+		//		return Json(assignment, JsonRequestBehavior.AllowGet);
+		//	}
+		//	return View(assignment);
+		//}
 
+		[HttpPost]
+		public ActionResult Create(AssignmentViewModel newAssignment)
+		{
+			if (ModelState.IsValid)
+			{
+				_teacherService.addAssignment(newAssignment);
 				return RedirectToAction("Index");
 			}
-			catch
-			{
-				return View();
-			}
+			return Json(newAssignment, JsonRequestBehavior.AllowGet);
 		}
 
-		// GET: Teacher/Edit/5
-		public ActionResult Edit(int id)
-		{
-			return View();
-		}
-
-		// POST: Teacher/Edit/5
-		[HttpPost]
-		public ActionResult Edit(int id, FormCollection collection)
-		{
-			try
-			{
-				// TODO: Add update logic here
-
-				return RedirectToAction("Index");
-			}
-			catch
-			{
-				return View();
-			}
-		}
-
-		// GET: Teacher/Delete/5
-		public ActionResult Delete(int id)
-		{
-			return View();
-		}
-
-		// POST: Teacher/Delete/5
-		[HttpPost]
-		public ActionResult Delete(int id, FormCollection collection)
-		{
-			try
-			{
-				// TODO: Add delete logic here
-				return RedirectToAction("Index");
-			}
-			catch
-			{
-				return View();
-			}
-		}
 	}
 }

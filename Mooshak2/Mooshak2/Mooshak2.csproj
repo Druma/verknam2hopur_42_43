@@ -278,6 +278,7 @@
       <DependentUpon>MainDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewModels\AssignmentViewModel.cs" />
     <Compile Include="ViewModels\CoursesViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
     <Compile Include="ViewModels\TeacherViewModel.cs" />
