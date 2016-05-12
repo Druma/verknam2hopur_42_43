@@ -43,3 +43,16 @@ input[type="file"]
 {
 	border: none;
 }
+
+#main
+{
+    float:right;
+    width:85%;
+    
+}
+
+#sidebar
+{
+    float:left;
+    width:15%;
+}
