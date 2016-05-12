@@ -27,21 +27,23 @@ var Students = {
 		});
 	}
 };
+Students.init();
 
 $(document).ready(function () {
-	$("#btnSave").click(function () {
-		// Create a JSON object:
+	$("#btnSave").click(function ()
+	{
 		var assignment = {
 			"Name": $("#Name").val(),
 			"MaxSubmissions": $("#submissionNumber").val(),
 			"GroupSize": $("#groupSize").val(),
 			"AssignmentStart": $("#assignmentStart").val(),
 			"AssignmentEnd": $("#assignmentEnd").val(),
-			"CourseID": $("#CourseID").val()
+			"CourseID": $("#CourseID").val(),
+			"Description": $("#Description").val(),
+			"SolutionFile": $("#solutionFile").val()
 		};
 
 		$.post("/Teacher/Create", assignment, function (data) {
-			// TODO: process the response, if any!
 
 			if (data != null) {
 				console.log('success');
@@ -51,6 +53,8 @@ $(document).ready(function () {
 				$("#assignmentStart").val('');
 				$("#assignmentEnd").val('');
 				$("#CourseID").val('');
+				$("#Description").val('');
+				$("#solutionFile").val("");
 				alert("Assignment Created");
 			}
 			else {
@@ -78,7 +82,7 @@ function validate() {
 	}
 };
 
-Students.init();
+
 
 
 //When the user clicks on the second dropdownlist and choses 

@@ -112,6 +112,16 @@ namespace Mooshak2.Services
 				};
 				context.assignments.Add(model);
 				context.SaveChanges();
+
+				assignmentPart modelPart = new assignmentPart
+				{
+					descriptoin = newAssignment.Description,
+					solutionFile = newAssignment.SolutionFile,
+					assignmentID = model.ID
+				};
+
+				context.assignmentParts.Add(modelPart);
+				context.SaveChanges();
 			}
 		}
 	}

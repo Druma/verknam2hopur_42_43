@@ -26,11 +26,12 @@ namespace Mooshak2.Controllers
 			return View(model);
 		}
 
-		// GET: Teacher/Details/5
-		public ActionResult Details()
+		// GET: Teacher/StudentList
+		public ActionResult StudentList()
 		{
-			ViewBag.Message = "Your application description page.";
-			return View();
+			var students = new List<TeacherViewModel>();
+			students = _teacherService.getStudentsInCourse("Verklegt Námskeið 2");
+			return View(students);
 		}
 
 		// GET: Teacher/Create
@@ -40,19 +41,6 @@ namespace Mooshak2.Controllers
 			return View();
 		}
 
-		// POST: Teacher/Create
-		//[HttpPost]
-		//public ActionResult Create([Bind(Include = "Name,MaxSubmissions,GroupSize,AssignmentStart,AssignmentEnd,CourseID")] assignment assignment)
-		//{
-		//	if (ModelState.IsValid)
-		//	{
-		//		_db.assignments.Add(assignment);
-		//		_db.SaveChanges();
-		//		return Json(assignment, JsonRequestBehavior.AllowGet);
-		//	}
-		//	return View(assignment);
-		//}
-
 		[HttpPost]
 		public ActionResult Create(AssignmentViewModel newAssignment)
 		{
@@ -61,6 +49,7 @@ namespace Mooshak2.Controllers
 				_teacherService.addAssignment(newAssignment);
 				return RedirectToAction("Index");
 			}
+
 			return Json(newAssignment, JsonRequestBehavior.AllowGet);
 		}
 

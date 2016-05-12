@@ -1,12 +1,11 @@
-﻿@*@model IEnumerable<Mooshak2.ViewModels.TeacherViewModel>*@
-@model Mooshak2.ViewModels.AssignmentViewModel
+﻿@model IEnumerable<Mooshak2.ViewModels.TeacherViewModel>
 
 @{
-    Layout = "~/Views/Shared/_Masterpage.cshtml";
+	Layout = "~/Views/Shared/_Masterpage.cshtml";
 }
 
 @{
-    ViewBag.Title = "Teachers";
+	ViewBag.Title = "Teacher - Student List";
 }
 <nav class="navbar navbar navbar-static-top">
 
@@ -17,7 +16,7 @@
 			</div>
 			<div class="col-xs-6 text-center">
 				<h5>Teacher Name</h5>
-				<button class="btn btn-primary" id="logout" onclick="location.href='/?dis=yes'">Útskrá</button>
+				<button class="btn btn-primary">Logout</button>
 			</div>
 		</div>
 	</div>
@@ -31,7 +30,7 @@
 
 			<ul class="nav nav-tabs">
 				<li>
-					@Html.ActionLink("Settings", "Index")
+					@Html.ActionLink("Settings", "Index", null, new { })
 				</li>
 				<li>
 					@Html.ActionLink("Student Link", "StudentList")
@@ -46,16 +45,17 @@
 
 			<div class="tab-content">
 
-				<div id="settings" class="tab-pane fade in active" > <!-- Tab #1 : START -->
+				<div id="settings" class="tab-pane fade">
+					<!-- Tab #1 : START -->
 
 					<h3>Settings</h3>
-					@using (Html.BeginForm("Create", "Teacher", FormMethod.Post, new { id = "assignmentForm" }))
+					@*@using (Html.BeginForm("Create", "Teacher", FormMethod.Post, new { id = "assignmentForm" }))
 					{
 						@Html.ValidationSummary(true, "Choose Course Create a Assignment For");
 
-						@Html.DropDownListFor(Model => Model.CourseID, Model.Courses, "Choose...", new { @class = "form-control", required = "" })
+						@Html.DropDownListFor(Model => Model.CourseID, Model.Courses, "Choose...", new { @class = "form-control" })
 
-						@Html.TextBoxFor(Model => Model.Name, new { @class = "form-control", placeholder = "Assignment 1", required = "" })
+						@Html.TextBoxFor(Model => Model.Name, new { @class = "form-control", placeholder = "Assignment 1" })
 
 						<label for="assignmentStart">Assignment Starts</label>
 						<input type="datetime-local" id="assignmentStart" class="form-control" placeholder="9/9/1999" />
@@ -106,67 +106,61 @@
 							<option value="5">5</option>
 						</select>
 						<br />
-						<label class="btn btn-primary">
-							<input type="file" name="file" id="file" />
-							Upload solution file.
-						</label>
-						<input type="hidden" value="Solution File..." name="solutionFile", id="solutionFile"/>
-						<br />
-						@Html.LabelFor(Model => Model.Description)
-						<br />
-						@Html.TextAreaFor(Model => Model.Description)
-						<br />
 						<input type="button" id="btnSave" value="Create" />
-					}
+					}*@
 					<!--TODO: Code for dynamic display of Solution picks and project descriptions.-->
 
 				</div> <!-- Tab #1 : END -->
 
-				<div id="studentList" class="tab-pane fade"> <!-- Tab #2 : START -->
-					
+				<div id="studentList" class="tab-pane fade in active">
+					<!-- Tab #2 : START -->
+
 					<h3>Student List</h3>
-						@*<table>
-								<thead>
-									<tr>
-										<th>
-											@Html.DisplayNameFor(Model => Model.Name)
-										</th>
-										<th>
-											@Html.DisplayNameFor(Model => Model.Username)
-										</th>
-										<th>
-											@Html.DisplayNameFor(Model => Model.Group)
-										</th>
-										<th>
-											@Html.DisplayNameFor(Model => Model.Submission)
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									@foreach (var item in Model)
-									{
-										<tr>
-											<td>
-												@Html.DisplayFor(modelItem => item.Name)
-											</td>
-											<td>
-												@Html.DisplayFor(modelItem => item.Username)
-											</td>
-											<td>
-												@Html.DisplayFor(modelItem => item.Group)
-											</td>
-											<td>
-												@Html.DisplayFor(modelItem => item.Submission)
-											</td>
-										</tr>
-									}
-								</tbody>
-						</table>*@
+					<table>
+						<thead>
+							<tr>
+								<th>
+									@Html.DisplayNameFor(Model => Model.Name)
+								</th>
+								<th>
+									@Html.DisplayNameFor(Model => Model.Username)
+								</th>
+								<th>
+									@Html.DisplayNameFor(Model => Model.Group)
+								</th>
+								<th>
+									@Html.DisplayNameFor(Model => Model.Submission)
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr>
+									<td>
+										@Html.DisplayFor(modelItem => item.Name)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.Username)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.Group)
+									</td>
+									<td>
+										@Html.DisplayFor(modelItem => item.Submission)
+									</td>
+								</tr>
+							}
+						</tbody>
+						</table>
 				</div> <!-- Tab #2 : END -->
-			
+
 			</div>
 
 		</div>
-	</div> 
+	</div>
 
 </div>
+
+
+

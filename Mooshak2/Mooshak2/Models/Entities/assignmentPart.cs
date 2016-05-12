@@ -1,12 +1,12 @@
 namespace Mooshak2
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    public partial class assignmentPart
+	using System;
+	using System.Collections.Generic;
+	using System.ComponentModel.DataAnnotations;
+	using System.ComponentModel.DataAnnotations.Schema;
+	using System.Data.Entity.Spatial;
+	using System.Web;
+	public partial class assignmentPart
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public assignmentPart()
@@ -19,7 +19,7 @@ namespace Mooshak2
 
         public string descriptoin { get; set; }
 
-        [Required]
+        
         public string solutionFile { get; set; }
 
         public int assignmentID { get; set; }

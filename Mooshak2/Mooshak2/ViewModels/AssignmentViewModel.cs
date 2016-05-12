@@ -9,6 +9,9 @@ namespace Mooshak2.ViewModels
 {
 	public class AssignmentViewModel
 	{
+		//Assignment
+		[HiddenInput(DisplayValue = false)]
+		public int ID { get; set; }
 		public string Name { get; set; }
 		public int MaxSubmissions { get; set; }
 		public int GroupSize { get; set; }
@@ -17,24 +20,10 @@ namespace Mooshak2.ViewModels
 		public string Course { get; set; }
 		public SelectList Courses { get; set; }
 		public int CourseID { get; set; }
-		//public IEnumerable<SelectList> CourseID { get; set; }
 
-		//[Required]
-		//public string Name { get; set; }
-		//public int MaxSubmissions { get; set; }
-		//public int GroupSize { get; set; }
-
-		//[Required]
-		//[DataType(DataType.DateTime)]
-		//public DateTime AssignmentStart { get; set; }
-
-		//[Required]
-		//[DataType(DataType.DateTime)]
-		//public DateTime AssignmentEnd { get; set; }
-		//public string Course { get; set; }
-		//public SelectList Courses { get; set; }
-
-		//[Required]
-		//public int CourseID { get; set; }
+		//Assignemnt Part.
+		public string Description { get; set; }
+		public string SolutionFile { get; set; }
+		public int AssignmentID { get; set; }
 	}
 }
