@@ -10,44 +10,41 @@
 
 
 <header class="navbar navbar-static-top">
+    <!-- row #1 : dropdown and file upload -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-1">
+                <img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="60" width="60" />
+            </div>
+            <div class="col-xs-2 text-center">
+                <h5 class="">Daniel Freyr Sigurðsson</h5>
+                <h6>Gagnaskipan</h6>
+                @Html.DropDownListFor(model => model.Username, Model.AvailableAssignments, new { @class = "form-control" })
+            </div>
+            <div class="col-xs-3">
+                <select class="form-control" id="project">
+                    <option>Lab 1</option>
+                    <option>Lab 2</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <form action="toDatabase">
+                    Select a file:<input type="file" accept=".cpp"><br />
+                    <input type="submit" value="Submit">
+                </form>
+                @*<button class="btn btn-primary" id="submit">Submit</button>*@
+            </div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-6">
-				<img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
-			</div>
-			<div class="col-xs-6 text-center">
-				<h5 class="">Daniel Freyr Sigurðsson</h5>
-				<h6>Gagnaskipan</h6>
-				<button class="btn btn-primary" id="logout" onclick="location.href='/?dis=yes'">Log out</button>
-			</div>
-		</div>
-	</div>
-
+            <div class="col-xs-6 text-center">
+                <button class="btn btn-primary" id="logout" onclick="location.href='/?dis=yes'">Log out</button>
+            </div>
+        </div>
+    </div>
 </header>
 <div class="container">
 
-	<!-- row #1 : dropdown and file upload -->
-    <div class="row text-center">
-        <div class="col-sm-4">
-            @Html.DropDownListFor(model => model.Username, Model.AvailableAssignments, new { @class = "form-control" })
-        </div>
-
-        <div class="col-sm-4">
-            <select class="form-control" id="project">
-                <option>Lab 1</option>
-                <option>Lab 2</option>
-            </select>
-        </div>
-
-        <div class="col-sm-4">
-            <label class="btn btn-primary">
-                <input type="file" />
-				Upload file from computer
-            </label>
-        </div>
-    </div>
-
+	
+    
 	<!-- row #2 : Tabs -->
 	<div class="row">
 		<div class="col-sm-12">
