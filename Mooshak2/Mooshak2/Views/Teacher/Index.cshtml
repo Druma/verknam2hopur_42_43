@@ -24,7 +24,7 @@
 
 			<ul class="nav nav-tabs">
 				<li>
-					@Html.ActionLink("Settings", "Index")
+					@Html.ActionLink("Settings", "Index", null, new { @class = "active" })
 				</li>
 				<li>
 					@Html.ActionLink("Student Link", "StudentList")
@@ -42,7 +42,7 @@
 				<div id="settings" class="tab-pane fade in active" > <!-- Tab #1 : START -->
 
 					<h3>Settings</h3>
-					@using (Html.BeginForm("Create", "Teacher", FormMethod.Post, new { id = "assignmentForm" }))
+					@using (Html.BeginForm("Create", "Teacher", FormMethod.Post, new { @class = "no-border", id = "assignmentForm" }))
 					{
 						@Html.ValidationSummary(true, "Choose Course Create a Assignment For");
 
