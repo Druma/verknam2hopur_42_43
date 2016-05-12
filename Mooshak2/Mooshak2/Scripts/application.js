@@ -1,5 +1,7 @@
 ﻿// application.js
 
+//When the user clicks on the assignment list, the subassignments who are
+//assigned to the main assignment appear in the second drop down list
 var Students = {
 	init: function () {
 		Students.eventListners();
@@ -12,6 +14,7 @@ var Students = {
 				type: 'GET',
 				data: { Id: value },
 				success: function (data) {
+				    $('#des2').hide();
 					var options = $("#project");
 					options.empty();
 					$(data).each(function (indx, item) {
@@ -76,3 +79,32 @@ function validate() {
 };
 
 Students.init();
+
+
+//When the user clicks on the second dropdownlist and choses 
+//an assignment, the assignment description appears in the description tab
+var assignmentsPart = {
+    init: function () {
+        assignmentsPart.eventListners();
+    },
+    eventListners: function () {
+        $("#project").on('click', function () {
+
+            var value2 = $(this).find("option:selected").text();
+            var value = $(this).val();
+            console.log(value);
+            console.log(value2);
+            $.ajax({
+                url: '/Student/GetAssignmentParts',
+                type: 'GET',
+                data: { Id: value },
+                success: function (data) {
+                    $('#des2').show();
+                    $('#des2').text(value2);
+
+                }
+            });
+        });
+    }
+};
+assignmentsPart.init();
