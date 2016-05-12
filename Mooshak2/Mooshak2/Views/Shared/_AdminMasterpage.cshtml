@@ -17,23 +17,20 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Users", "Index", "Admin")</li>
-                    <li>@Html.ActionLink("Courses", "Courses", "Admin")</li>
-                </ul>
-            </div>
+    <nav class="navbar navbar navbar-static-top" id="sidebar">
+        <img class="glyphicon-align-center" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="60" width="60" />
+        <div class="text-center">
+            <h5>Admin Name</h5>
+            <button class="btn btn-primary" id="logout" onclick="location.href='/?dis=yes'">Logout</button>
         </div>
+    </nav>
+    <div class="col-sm-12 page-main">
+        <ul class="nav nav-tabs">
+            <li>@Html.ActionLink("Users", "Index", "Admin")</li>
+            <li>@Html.ActionLink("Courses", "Courses", "Admin")</li>
+        </ul>
     </div>
+        
     <div>
         @RenderBody()
     </div>
