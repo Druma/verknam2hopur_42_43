@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Mooshak2.BundleConfig" Collapsed="true">
     <Position X="7.5" Y="1.5" Width="1.5" />
@@ -473,3 +474,6 @@
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
+=======
+<ClassDiagram /> 
+>>>>>>> 33edf45a2b666b2670893087a77ec7754d615a9c

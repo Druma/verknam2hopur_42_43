@@ -43,3 +43,26 @@ input[type="file"]
 {
 	border: none;
 }
+
+#main
+{
+    float:right;
+    width:85%;
+    
+}
+
+#sidebar
+{
+    float:left;
+    width:15%;
+}
+
+#studentcol3
+{
+    height:126px;
+}
+
+#studentcol1
+{
+    height:126px;
+}

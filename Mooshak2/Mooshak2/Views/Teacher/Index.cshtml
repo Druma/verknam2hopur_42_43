@@ -8,23 +8,16 @@
 @{
     ViewBag.Title = "Teachers";
 }
-<nav class="navbar navbar navbar-static-top">
 
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-6">
-				<img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
-			</div>
-			<div class="col-xs-6 text-center">
-				<h5>Teacher Name</h5>
-				<button class="btn btn-primary" id="logout" onclick="location.href='/?dis=yes'">Útskrá</button>
-			</div>
-		</div>
-	</div>
-
+<nav class="navbar navbar navbar-static-top" id="sidebar">
+    <img class="glyphicon-align-center" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="60" width="60" />
+    <div class="text-center">
+        <h5>Teacher Name</h5>
+        <button class="btn btn-primary" id="logout" onclick="location.href='/?dis=yes'">Útskrá</button>
+    </div>
 </nav>
 
-<div class="container ">
+<div class="container " id="main">
 	<!-- row #1 : Tabs -->
 	<div class="row">
 		<div class="col-sm-12">
