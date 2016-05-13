@@ -7,24 +7,42 @@ var Students = {
 		Students.eventListners();
 	},
 	eventListners: function () {
-		$("#Username").on('change', function () {
-			var value = $(this).val();
-			$.ajax({
-				url: '/Student/GetAssignmentParts',
-				type: 'GET',
-				data: { Id: value },
-				success: function (data) {
-				    $('#des2').hide();
-					var options = $("#project");
-					options.empty();
-					$(data).each(function (indx, item) {
-						var itemText = item.Text;
-						var itemValue = item.Value;
-						options.append(new Option(itemText, itemValue));
-					});
-				}
-			});
-		});
+	    $(document).on('change', '.btn-file :file', function () {
+	        var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+	        input.trigger('fileselect', [numFiles, label]);
+	    });
+
+	    $(document).ready(function () {
+	        $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+
+	            var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+	            if (input.length) {
+	                input.val(log);
+	            } else {
+	                if (log) alert(log);
+	            }
+
+	        });
+	    });
+
+	    $("#CheckCode").on("submit", function (e) {
+	        e.preventDefault();
+	        $.ajax({
+	            url: this.action,
+	            type: this.method,
+	            data: $(this).serialize(),
+	            success: function (data) {
+	                console.log('success');
+	                console.log(data);
+	                $('#result').html(data);
+	                $('#result-container').show();
+	            }
+	        });
+	    });
 	}
 };
 Students.init();
@@ -36,6 +54,25 @@ var assignmentsPart = {
         assignmentsPart.eventListners();
     },
     eventListners: function () {
+        $("#Username").on('change', function () {
+            var value = $(this).val();
+            $.ajax({
+                url: '/Student/GetAssignmentParts',
+                type: 'GET',
+                data: { Id: value },
+                success: function (data) {
+                    $('#des2').hide();
+                    var options = $("#project");
+                    options.empty();
+                    $(data).each(function (indx, item) {
+                        var itemText = item.Text;
+                        var itemValue = item.Value;
+                        options.append(new Option(itemText, itemValue));
+                    });
+                }
+            });
+        });
+
         $("#project").on('click', function () {
 
             var value2 = $(this).find("option:selected").text();

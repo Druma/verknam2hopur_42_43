@@ -377,6 +377,7 @@
     <Content Include="Views\Admin\Courses.cshtml" />
     <Content Include="Views\Shared\_AdminMasterpage.cshtml" />
     <Content Include="Views\Teacher\StudentList.cshtml" />
+    <Content Include="Views\Student\_SubmitCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

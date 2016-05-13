@@ -2,35 +2,39 @@
 @model LoginInfo
 <!--Here we use the _Login layout from the Shared directory-->
 @{
-    Layout = "~/Views/Shared/_Masterpage.cshtml";
-    ViewBag.Title = "Log In TEST";
+	Layout = "~/Views/Shared/_Masterpage.cshtml";
+}
+@{
+	ViewBag.Title = "Log In";
 }
 
 
 @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-signin login" }))
 {
-    <fieldset>
+	@Html.ValidationSummary(true, "Login failed. Check your login details");
+	<fieldset>
 
-        <img src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
+		<!--<legend>Login Form</legend>-->
 
-        <div>
-            @Html.TextBoxFor(p => p.Username, new { @class = "form-control", placeholder = "Username" })
-            @Html.ValidationMessageFor(p => p.Username)
-        </div>
+		<img src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
 
-        <div>
-            @Html.TextBoxFor(p => p.Password, new { @class = "form-control", placeholder = "Password", type = "password" })
-            @Html.ValidationMessageFor(p => p.Password)
-        </div>
+		<div>
+			@Html.TextBoxFor(p => p.Username, new { @class = "form-control login", placeholder = "Username" })
+			@Html.ValidationMessageFor(p => p.Username)
+		</div>
 
-        <input type="submit" value="Log In" class="btn btn-success" id="theSubmitButton" />
+		<div>
+			@Html.TextBoxFor(p => p.Password, new { @class = "form-control login", placeholder = "Password", type = "password" })
+			@Html.ValidationMessageFor(p => p.Password)
+		</div>
 
-    </fieldset>
+		<input type="submit" value="Log In" class="btn btn-success login" id="theSubmitButton" />
+
+	</fieldset>
 
 }
 
 @if (Model.UserDidNotGetLoggedIn)
 {
-    <p>Wrong username or password</p>
+	<p>Wrong username or password</p>
 }
-
