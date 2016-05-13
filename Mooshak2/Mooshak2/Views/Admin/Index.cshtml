@@ -1,144 +1,167 @@
 ﻿@model IEnumerable<Mooshak2.ViewModels.UserViewModel>
 
 @{
-    Layout = "~/Views/Shared/_AdminMasterpage.cshtml";
+    Layout = "~/Views/Shared/_Masterpage.cshtml";
 }
 
 @{
     ViewBag.Title = "Admins";
 }
 
-<h2>Admin</h2>
 
-<body>
+<header class="navbar navbar-static-top">
+	<div class="container">
 
-    <img href="http://cadia.ru.is/images/RU_midjad_white2.gif" />
-    <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" />
-    <input type="text" value="Notandanafn" />
+		<div class="row">
+			<div class="col-xs-6">
+				<img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
+			</div>
+			<div class="col-xs-6 text-center">
+				<!-- <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" /> -->
+				<h5 class="">Notendanafn</h5>
+				<button class="btn btn-primary" id="logout" href="/?dis=yes">Log out</button>
+			</div>
 
-    @*<ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" id="link-tabA" href="#home">Notendur</a></li>
-        <li><a data-toggle="tab" id="link-tabB" href="@Url.Action()">userwindex</a></li>
-        <li><a data-toggle="tab" id="link-tabC" href="#menu1">Villuboð</a></li>
-        <li><a data-toggle="tab" id="link-tabD" href="#menu2">Áfangar</a></li>
-        <li><a data-toggle="tab" id="link-tabE" href="@Url.Action("Courses", "AdminController")"> test</a></li>
-    </ul>*@
+		</div>
 
-    <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
-            <h3>Notendur</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>@Html.DisplayNameFor(Model => Model.Name)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md-4">
-                    <form action="www.ru.is">
-                        <input type="radio" name="User" value="Nemandi" />
-                        <input type="radio" name="User" value="Kennari" />
-                    </form>
+	</div>
+</header>
 
 
-                </div>
-                <div class="col-md-4">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Notendur Mooshak</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             @*@ foreach(ApplicationUser.RealName where Authorization = 1)
-                             {
-                             <tr>
-                                 <td>
-                                     this.RealName;
-                                 </td>
-                             </tr>
-                             } TODO: Finna almennilegan kóða til að sækja þetta*@
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        @*<div id="menu1" class="tab-pane fade">
-            <h3>Villuboð</h3>
-            <img href="http://cadia.ru.is/images/RU_midjad_white2.gif" />
-            <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" />
-            <input type="text" value="" placeholder="Notandanafn"/>
-
-            TODO: Put code to find errors to report
-        </div>
-
-        
-    </div>
-    
-    <div class="row">
-        <div class="col-md-4">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Notendur HR</th>
-                    </tr>
-                </thead>
-                <tbody>
-                     @ foreach(ApplicationUser.RealName where Authorization = 1)
-                     {
-                     <tr>
-                         <td>
-                             this.RealName;
-                         </td>
-                     </tr>
-                     } TODO: Finna almennilegan kóða til að sækja þetta
-                </tbody>
-            </table>
-        </div>
-        <div class="col-md-4">
-            <form action="www.ru.is">
-                <input type="radio" name="User2" value="Nemandi" />
-                <input type="radio" name="User2" value="Kennari" />
-            </form>
 
 
-        </div>
-        <div class="col-md-4">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Notendur Mooshak</th>
-                    </tr>
-                </thead>
-                <tbody>
-                     @ foreach(ApplicationUser.RealName where Authorization = 1)
-                     {
-                     <tr>
-                         <td>
-                             this.RealName;
-                         </td>
-                     </tr>
-                     } TODO: Finna almennilegan kóða til að sækja þetta
-                </tbody>
-            </table>
-        </div>*@
-    </div>
+<div class="container">
 
-    <form action="www.ru.is">
-        <input type="submit" value="Logout" class="btn btn-default">
-    </form>
+	@*<ul class="nav nav-tabs">
+			<li class="active"><a data-toggle="tab" id="link-tabA" href="#home">Notendur</a></li>
+			<li><a data-toggle="tab" id="link-tabB" href="@Url.Action()">userwindex</a></li>
+			<li><a data-toggle="tab" id="link-tabC" href="#menu1">Villuboð</a></li>
+			<li><a data-toggle="tab" id="link-tabD" href="#menu2">Áfangar</a></li>
+			<li><a data-toggle="tab" id="link-tabE" href="@Url.Action("Courses", "AdminController")"> test</a></li>
+		</ul>*@
 
-</body>
+	<div class="row">
+		<div class="col-xs-12">
+			<ul class="nav nav-tabs">
+				<li class="active">@Html.ActionLink("Users", "Index", "Admin")</li>
+				<li>@Html.ActionLink("Courses", "Courses", "Admin")</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="tab-content">
+		<div id="home" class="tab-pane fade in active">
+			<h3>Notendur</h3>
+			<div class="row">
+				<div class="col-md-4">
+					<table>
+						<thead>
+							<tr>
+								<th>@Html.DisplayNameFor(Model => Model.Name)</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr>
+									<td>
+										@Html.DisplayFor(modelItem => item.Name)
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-4">
+					<form action="www.ru.is">
+						<label>Nemandi</label>
+						<input type="radio" name="User" value="Nemandi" />
+						<label>Kennari</label>
+						<input type="radio" name="User" value="Kennari" />
+					</form>
+
+
+				</div>
+				<div class="col-md-4">
+					<table>
+						<thead>
+							<tr>
+								<th>Notendur Mooshak</th>
+							</tr>
+						</thead>
+						<tbody>
+							@*@ foreach(ApplicationUser.RealName where Authorization = 1)
+								{
+								<tr>
+									<td>
+										this.RealName;
+									</td>
+								</tr>
+								} TODO: Finna almennilegan kóða til að sækja þetta*@
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		@*<div id="menu1" class="tab-pane fade">
+					<h3>Villuboð</h3>
+					<img href="http://cadia.ru.is/images/RU_midjad_white2.gif" />
+					<img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" />
+					<input type="text" value="" placeholder="Notandanafn"/>
+
+					TODO: Put code to find errors to report
+				</div>
+
+
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<table>
+						<thead>
+							<tr>
+								<th>Notendur HR</th>
+							</tr>
+						</thead>
+						<tbody>
+								@ foreach(ApplicationUser.RealName where Authorization = 1)
+								{
+								<tr>
+									<td>
+										this.RealName;
+									</td>
+								</tr>
+								} TODO: Finna almennilegan kóða til að sækja þetta
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-4">
+					<form action="www.ru.is">
+						<input type="radio" name="User2" value="Nemandi" />
+						<input type="radio" name="User2" value="Kennari" />
+					</form>
+
+
+				</div>
+				<div class="col-md-4">
+					<table>
+						<thead>
+							<tr>
+								<th>Notendur Mooshak</th>
+							</tr>
+						</thead>
+						<tbody>
+								@ foreach(ApplicationUser.RealName where Authorization = 1)
+								{
+								<tr>
+									<td>
+										this.RealName;
+									</td>
+								</tr>
+								} TODO: Finna almennilegan kóða til að sækja þetta
+						</tbody>
+					</table>
+				</div>*@
+	</div>
+
+</div>

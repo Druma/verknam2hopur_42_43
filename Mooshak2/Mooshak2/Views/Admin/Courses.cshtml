@@ -1,140 +1,157 @@
 ﻿@model IEnumerable<Mooshak2.ViewModels.CoursesViewModel>
 
 @{
-    Layout = "~/Views/Shared/_AdminMasterpage.cshtml";
+    Layout = "~/Views/Shared/_Masterpage.cshtml";
 }
 @{
     ViewBag.Title = "Admins";
 }
 
-<h2>Courses</h2>
+<header class="navbar navbar-static-top">
+	<div class="container">
 
-<body>
+		<div class="row">
 
-    <img href="http://cadia.ru.is/images/RU_midjad_white2.gif" />
-    <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" />
-    <input type="text" value="Notandanafn" />
+			<div class="col-xs-6">
+				<img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
+			</div>
 
-    @*<ul class="nav nav-tabs">
-        <li><a data-toggle="tab" href="@Url.Action("Index", "AdminController")">Notendur</a></li>
-        <li><a data-toggle="tab" href="#menu1">Villuboð</a></li>
-        <li><a data-toggle="tab" href="#menu2">Áfangar</a></li>
-        <li class="active"><a data-toggle="tab" href="@Url.Action("Courses", "AdminController")"> test2</a></li>
-    </ul>*@
+			<div class="col-xs-6 text-center">
+				<!-- <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" /> -->
+				<h5 class="">Notendanafn</h5>
+				<button class="btn btn-primary" id="logout" href="/?dis=yes">Log out</button>
+			</div>
+		</div>
 
-    <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
-            <h3>Áfangar</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>@Html.DisplayNameFor(Model => Model.Name)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-                
-                
-            </div>
-        </div>
-       
+	</div>
 
-        <div id="menu2" class="tab-pane fade">
-            <h3>Áfangar</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <input type="submit" value="Stofna nýjan áfanga" />
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>@Html.DisplayNameFor(Model => Model.Name)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+</header>
+<div class="container">
 
-                    <select id="kennaraval">
-                        <option></option>
-                        <option></option>
-                    </select>
-                </div>
+	@*<ul class="nav nav-tabs">
+			<li><a data-toggle="tab" href="@Url.Action("Index", "AdminController")">Notendur</a></li>
+			<li><a data-toggle="tab" href="#menu1">Villuboð</a></li>
+			<li><a data-toggle="tab" href="#menu2">Áfangar</a></li>
+			<li class="active"><a data-toggle="tab" href="@Url.Action("Courses", "AdminController")"> test2</a></li>
+		</ul>*@
 
-                <div class="col-md-4">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nemendur Valins Áfanga</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @*@ foreach(ApplicationUser.RealName where Authorization = 1)
-                                {
-                                <tr>
-                                    <td>
-                                        this.RealName;
-                                    </td>
-                                </tr>
-                                } TODO: Finna almennilegan kóða til að sækja þetta*@
+	<div class="row">
+		<div class="col-xs-12">
+			<ul class="nav nav-tabs">
+				<li>@Html.ActionLink("Users", "Index", "Admin")</li>
+				<li class="active" >@Html.ActionLink("Courses", "Courses", "Admin")</li>
+			</ul>
+		</div>
+	</div>
 
-                        </tbody>
-                    </table>
+	<div class="tab-content">
+		<div id="home" class="tab-pane fade in active">
+			<h3>Áfangar</h3>
+			<div class="row">
+				<div class="col-md-4">
+					<table>
+						<thead>
+							<tr>
+								<th>@Html.DisplayNameFor(Model => Model.Name)</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr>
+									<td>
+										@Html.DisplayFor(modelItem => item.Name)
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
 
-                    <input type="submit" value="Eyða völdum nemendum úr áfanganum" />
 
-                </div>
+			</div>
+		</div>
 
-                <div class="col-md-4">
-                    <input type="submit">Tengja valda nemendur við valin áfanga>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Notendur Mooshak</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @*@ foreach(ApplicationUser.RealName where Authorization = 1)
-                                {
-                                <tr>
-                                    <td>
-                                        this.RealName;
-                                    </td>
-                                </tr>
-                                } TODO: Finna almennilegan kóða til að sækja þetta*@
+		<div id="menu2" class="tab-pane fade">
+			<h3>Áfangar</h3>
+			<div class="row">
+				<div class="col-md-4">
+					<input type="submit" value="Stofna nýjan áfanga" />
+					<table>
+						<thead>
+							<tr>
+								<th>@Html.DisplayNameFor(Model => Model.Name)</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr>
+									<td>
+										@Html.DisplayFor(modelItem => item.Name)
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+					<select id="kennaraval">
+						<option></option>
+						<option></option>
+					</select>
+				</div>
 
-    
-       
+				<div class="col-md-4">
+					<table>
+						<thead>
+							<tr>
+								<th>Nemendur Valins Áfanga</th>
+							</tr>
+						</thead>
+						<tbody>
+							@*@ foreach(ApplicationUser.RealName where Authorization = 1)
+								{
+								<tr>
+									<td>
+										this.RealName;
+									</td>
+								</tr>
+								} TODO: Finna almennilegan kóða til að sækja þetta*@
 
-    <form action="www.ru.is">
-        <input type="submit" value="Logout" class="btn btn-default">
-    </form>
+						</tbody>
+					</table>
 
-</body>
+					<input type="submit" value="Eyða völdum nemendum úr áfanganum" />
+
+				</div>
+
+				<div class="col-md-4">
+					<input type="submit">Tengja valda nemendur við valin áfanga>
+
+					<table>
+						<thead>
+							<tr>
+								<th>Notendur Mooshak</th>
+							</tr>
+						</thead>
+						<tbody>
+							@*@ foreach(ApplicationUser.RealName where Authorization = 1)
+								{
+								<tr>
+									<td>
+										this.RealName;
+									</td>
+								</tr>
+								} TODO: Finna almennilegan kóða til að sækja þetta*@
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
