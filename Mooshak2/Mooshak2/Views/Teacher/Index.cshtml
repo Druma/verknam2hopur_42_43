@@ -17,7 +17,8 @@
 				<img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
 			</div>
 			<div class="col-xs-6 text-center">
-				<h5 class=""><span id="whoIsLoggedIn">@Model.Name</span></h5>
+				<h5>name here</h5>
+				 <!-- <h5 class=""><span id="whoIsLoggedIn"></span></h5> -->
 				<button class="btn btn-primary" id="logout" onclick="location.href='/?dis=yes'">Log out</button>
 			</div>
 		</div>
@@ -31,7 +32,7 @@
 		<div class="col-sm-12">
 
 			<ul class="nav nav-tabs">
-				<li>
+				<li class="active">
 					@Html.ActionLink("Settings", "Index", null, new { @class = "active" })
 				</li>
 				<li>
@@ -108,10 +109,8 @@
 						<br />
 						@Html.TextAreaFor(Model => Model.Description)
 						<br />
-						<label class="btn btn-primary">
-							<input type="file" name="file" id="file" />
-							Upload solution file.
-						</label>
+						<label for="file" id="forFileLabel">Upload solution file.</label>
+						<input type="file" name="file" id="file" />
 						<input type="hidden" value="Solution File..." name="solutionFile" , id="solutionFile" />
 						<br />
 						<!--Second milestone input.-->
@@ -119,10 +118,8 @@
 						<br />
 						<textarea id="Description2" name="Description2"></textarea>
 						<br />
-						<label id="uploadBtn2" class="btn btn-primary">
-							<input type="file" name="file2" id="file2" />
-							Upload solution file.
-						</label>
+						<label id="forFileLabel2" for="file2">Upload solution file.</label>
+						<input type="file" name="file2" id="file2" />
 						<input type="hidden" value="Solution File..." name="solutionFile2" , id="solutionFile2" />
 						<br />
 						<!--Third milestone input.-->
@@ -130,10 +127,8 @@
 						<br />
 						<textarea id="Description3" name="Description3"></textarea>
 						<br />
-						<label id="uploadBtn3" class="btn btn-primary">
-							<input type="file" name="file3" id="file3" />
-							Upload solution file.
-						</label>
+						<label id="forFileLabel3" for="file3">Upload solution file.</label>
+						<input type="file" name="file3" id="file3" />
 						<input type="hidden" value="Solution File..." name="solutionFile3" , id="solutionFile3" />
 						<input type="button" id="btnSave" value="Create" />
 					}
