@@ -8,7 +8,7 @@
 }
 
 
-@using (Html.BeginForm("Index", "Student", FormMethod.Post, new { @class = "form-signin" }))
+@using (Html.BeginForm("Index", "Student", FormMethod.Post, new { @class = "form-signin login" }))
 {
     @Html.ValidationSummary(true, "Login failed. Check your login details");
     <fieldset>
@@ -18,16 +18,16 @@
         <img src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
 
         <div>
-            @Html.TextBoxFor(u => u.Username, new { @class = "form-control", placeholder = "Username", required = "", autofocus = "" })
+            @Html.TextBoxFor(u => u.Username, new { @class = "form-control login", placeholder = "Username", required = "", autofocus = "" })
             @Html.ValidationMessageFor(u => u.Username)
         </div>
 
         <div>
-            @Html.PasswordFor(u => u.Password, new { @class = "form-control", name = "Password", placeholder = "Password", required = "" })
+            @Html.PasswordFor(u => u.Password, new { @class = "form-control login", name = "Password", placeholder = "Password", required = "" })
             @Html.ValidationMessageFor(u => u.Password)
         </div>
 
-        <input type="submit" value="Log In" class="btn btn-success" />
+        <input type="submit" value="Log In" class="btn btn-success login" />
 
     </fieldset>
 

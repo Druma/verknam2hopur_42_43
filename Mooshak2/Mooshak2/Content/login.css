@@ -4,16 +4,16 @@
     margin: 1em auto;
 }
 
-form
+form.login
 {
     max-width: 26.25em;
 	width: 100%;
-    margin: auto;
+    margin: 5em auto;
     background-color: white;
     border: 0.1875em dotted rgba(0,0,0,0.1);
   }
  
-input, .btn-success
+input.login, .btn-success.login
 {
 	width: 100%;
 	display: block;
@@ -23,17 +23,18 @@ input, .btn-success
 
 
 /*
-    When the screen is less then 35em (or the max width is 35em)
-    35em = 35*15px = 560px
+    When the screen is less then 48em (or the max width is 48em)
+    48em = 48*16px = 768px
 */
-@media only screen and (max-width: 35em)
+@media only screen and (max-width: 48em)
 {
-    .btn-success, .form-signin input
+    .btn-success.login, .form-signin input.login
     {
         width: 80%;
     }
-    form
+    form.login
     {
+		margin: auto;
         max-width: 100%;
         border: none;
     }
