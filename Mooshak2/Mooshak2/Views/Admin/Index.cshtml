@@ -16,13 +16,10 @@
 			<div class="col-xs-6">
 				<img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
 			</div>
-			<div class="col-xs-6">
-				<ul class="nav navbar-nav pull-right">
-					<li>@Html.ActionLink("Users", "Index", "Admin", new { @class = "btn btn-default"})</li>
-					<li>@Html.ActionLink("Courses", "Courses", "Admin", new { @class = "btn btn-default"})</li>
-					<!-- <li><button class="btn btn-primary pull-right" id="logout" onclick="location.href='/?dis=yes'">Log out</button></li> -->
-					<li><a class="btn btn-primary" id="logout" href="/?dis=yes">Log out</a></li>
-				</ul>
+			<div class="col-xs-6 text-center">
+				<!-- <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" /> -->
+				<h5 class="">Notendanafn</h5>
+				<button class="btn btn-primary" id="logout" href="/?dis=yes">Log out</button>
 			</div>
 
 		</div>
@@ -34,8 +31,6 @@
 
 
 <div class="container">
-	<!-- <img href="https://mooshak.dcc.fc.up.pt/logos/mooshak.gif" /> -->
-	<label>Notendanafn</label>
 
 	@*<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" id="link-tabA" href="#home">Notendur</a></li>
@@ -44,6 +39,15 @@
 			<li><a data-toggle="tab" id="link-tabD" href="#menu2">Áfangar</a></li>
 			<li><a data-toggle="tab" id="link-tabE" href="@Url.Action("Courses", "AdminController")"> test</a></li>
 		</ul>*@
+
+	<div class="row">
+		<div class="col-xs-12">
+			<ul class="nav nav-tabs">
+				<li class="active">@Html.ActionLink("Users", "Index", "Admin")</li>
+				<li>@Html.ActionLink("Courses", "Courses", "Admin")</li>
+			</ul>
+		</div>
+	</div>
 
 	<div class="tab-content">
 		<div id="home" class="tab-pane fade in active">
