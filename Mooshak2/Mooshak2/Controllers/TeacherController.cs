@@ -29,15 +29,15 @@ namespace Mooshak2.Controllers
 		// GET: Teacher/StudentList
 		public ActionResult StudentList()
 		{
-			//var students = new List<TeacherViewModel>();
-			//students = _teacherService.getStudentsInCourseByID(1);
-			//return View(students);
+			var students = new List<TeacherViewModel>();
+			students = _teacherService.getStudentsInCourseByID(1);
+			return View(students);
 
-			var model = new TeacherViewModel
-			{
-				Courses = new SelectList(_teacherService.getTeacherCoursesByID(6), "CourseID", "Course")
-			};
-			return View(model);
+			//var model = new TeacherViewModel
+			//{
+			//	Courses = new SelectList(_teacherService.getTeacherCoursesByID(6), "CourseID", "Course")
+			//};
+			//return View(model);
 		}
 
 		// GET: Teacher/Create
