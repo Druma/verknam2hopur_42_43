@@ -8,13 +8,22 @@
     ViewBag.Title = "Teachers";
 }
 
-<nav class="navbar navbar navbar-static-top" id="sidebar">
-    <img class="glyphicon-align-center" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="60" width="60" />
-    <div class="text-center">
-        <h5>Teacher Name</h5>
-        <button class="btn btn-primary" id="logout" onclick="location.href='/?dis=yes'">Logout</button>
-    </div>
-</nav>
+
+<header class="navbar navbar-static-top">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6">
+				<img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
+			</div>
+			<div class="col-xs-6 text-center">
+				<h5 class=""><span id="whoIsLoggedIn">@Model.Name</span></h5>
+				<button class="btn btn-primary" id="logout" onclick="location.href='/?dis=yes'">Log out</button>
+			</div>
+		</div>
+	</div>
+
+</header>
 
 <div class="container page-main">
 	<!-- row #1 : Tabs -->
