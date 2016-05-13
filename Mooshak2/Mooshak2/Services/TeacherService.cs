@@ -1,6 +1,7 @@
 ﻿using Mooshak2.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -60,7 +61,30 @@ namespace Mooshak2.Services
 			return viewModel;
 		}
 
-		public List<TeacherViewModel> getStudentsInCourse(string course)
+		//public List<TeacherViewModel> getStudentsInCourseByID(int courseID)
+		//{
+		//	var result = (from n in _db.users
+		//				  join g in _db.groups on n.ID equals g.userID
+		//				  join uas in _db.userAssignmentStats on n.ID equals uas.userID
+		//				  join ut in _db.userTypes on n.userTypeID equals ut.ID
+		//				  join sc in _db.studentCourses on n.ID equals sc.userID
+		//				  join c in _db.courses on sc.courseID equals c.ID
+		//				  where ut.type == "student"
+		//				  && c.ID == courseID
+		//				  && uas.submissionCount >= 0
+		//				  orderby n.name ascending
+		//				  select new { users = n, groups = g.name, userAssignmentStats = uas.submissionCount }).Select(x => new TeacherViewModel
+		//				  {
+		//					  Name = x.users.name,
+		//					  Username = x.users.username,
+		//					  Group = (x.groups == null ? " " : x.groups),
+		//					  Submission = x.userAssignmentStats
+		//				  }).ToList();
+
+		//	return result;
+		//}
+
+		public List<TeacherViewModel> getStudentsInCourseByID(int courseID)
 		{
 			var result = (from n in _db.users
 						  join g in _db.groups on n.ID equals g.userID
@@ -69,18 +93,32 @@ namespace Mooshak2.Services
 						  join sc in _db.studentCourses on n.ID equals sc.userID
 						  join c in _db.courses on sc.courseID equals c.ID
 						  where ut.type == "student"
-						  && c.name == course
+						  && c.ID == courseID
 						  && uas.submissionCount >= 0
 						  orderby n.name ascending
 						  select new { users = n, groups = g.name, userAssignmentStats = uas.submissionCount }).Select(x => new TeacherViewModel
 						  {
 							  Name = x.users.name,
 							  Username = x.users.username,
-							  Group = (x.groups == null ? " " : x.groups),
+							  Group = x.groups,
 							  Submission = x.userAssignmentStats
 						  }).ToList();
 
 			return result;
+		}
+
+		public List<SelectListItem> getAllCourses()
+		{
+			List<SelectListItem> courseList = new List<SelectListItem>();
+
+			courseList.Add(new SelectListItem() { Value = "", Text = "Courses..." });
+
+			_db.courses.ToList().ForEach((x) =>
+			{
+				courseList.Add(new SelectListItem() { Value = x.ID.ToString(), Text = x.name });
+			});
+
+			return courseList;
 		}
 
 		public List<TeacherViewModel> getTeacherCoursesByID(int teacherID)
@@ -119,7 +157,6 @@ namespace Mooshak2.Services
 					solutionFile = newAssignment.SolutionFile,
 					assignmentID = model.ID
 				};
-
 				context.assignmentParts.Add(modelPart);
 				context.SaveChanges();
 			}

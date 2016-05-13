@@ -10,8 +10,6 @@ namespace Mooshak2.ViewModels
 	public class AssignmentViewModel
 	{
 		//Assignment
-		[HiddenInput(DisplayValue = false)]
-		public int ID { get; set; }
 		public string Name { get; set; }
 		public int MaxSubmissions { get; set; }
 		public int GroupSize { get; set; }
