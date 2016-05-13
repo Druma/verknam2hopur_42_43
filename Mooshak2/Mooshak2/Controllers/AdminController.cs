@@ -12,89 +12,75 @@ namespace Mooshak2.Controllers
     {
         private UserService _userService = new UserService();
         private CoursesService _coursesService = new CoursesService();
+		private AdminService _adminService = new AdminService();
         private dbContext _db = new dbContext();
         // GET: Admin
         public ActionResult Index()
         {
-            var userViewModel = new List<UserViewModel>();
-            var viewModel = _userService.getAllUsers();
-            userViewModel = viewModel;
-            return View(viewModel);
-        }
+			//var userViewModel = new List<UserViewModel>();
+			//var viewModel = _userService.getAllUsers();
+			//userViewModel = viewModel;
+			//return View(viewModel);
+
+			var model = new AdminViewModel
+			{
+				UserTypes = new SelectList(_adminService.getUserTypes(), "UserTypeID", "UserType"),
+				Courses = new SelectList(_adminService.GetAllCourses(), "CourseID", "Course")
+			};
+
+			return View(model);
+		}
 
         // GET: Admin/Details/5
         public ActionResult Courses()
         {
-            var coursesViewModel = new List<CoursesViewModel>();
-            var viewModel = _coursesService.getAllCourses();
-            coursesViewModel = viewModel;
-            return View(viewModel);
-        }
+			//var coursesViewModel = new List<CoursesViewModel>();
+			//var viewModel = _coursesService.getAllCourses();
+			//coursesViewModel = viewModel;
+			//return View(viewModel);
 
-        // GET: Admin/Create
-        public ActionResult Create()
-        {
-            return View();
+			var model = new AdminViewModel
+			{
+				Teachers = new SelectList(_adminService.getAllTeachers(), "TeacherID", "TeacherName"),
+				Courses = new SelectList(_adminService.GetAllCourses(), "CourseID", "Course"),
+				Students = new SelectList(_adminService.GetAllCourses(), "StudentID", "StudentName")
+			};
+
+			return View(model);
         }
 
         // POST: Admin/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Register(AdminViewModel newUser)
         {
-            try
-            {
-                // TODO: Add insert logic here
+			if (ModelState.IsValid)
+			{
+				_adminService.registerUser(newUser);
+				return RedirectToAction("Index");
+			}
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+			return Json(newUser, JsonRequestBehavior.AllowGet);
+		}
 
-        // GET: Admin/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+		public ActionResult LinkTeacher(AdminViewModel teacherToLink)
+		{
+			if(ModelState.IsValid)
+			{
+				_adminService.linkTeacher(teacherToLink);
+				return RedirectToAction("Courses");
+			}
+			return Json(teacherToLink, JsonRequestBehavior.AllowGet);
+		}
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Admin/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-    }
+		public ActionResult LinkStudent(AdminViewModel studentToLink)
+		{
+			if (ModelState.IsValid)
+			{
+				_adminService.linkTeacher(studentToLink);
+				return RedirectToAction("Courses");
+			}
+			return Json(studentToLink, JsonRequestBehavior.AllowGet);
+		}
+	}
 }

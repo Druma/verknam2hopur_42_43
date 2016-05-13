@@ -122,3 +122,18 @@ $(document).ready(function () {
 	});
 	$("#assignmentParts").trigger("change");
 });
+
+$(document).ready(function () {
+	$("#CourseID").hide();
+	$("#UserTypeID").on('change', function () {
+		if($(this).val() == 2)
+		{
+			$("#CourseID").show();
+		}
+		else
+		{
+			$("#CourseID").hide();
+			$("#CourseID").val("");
+		}
+	});
+});

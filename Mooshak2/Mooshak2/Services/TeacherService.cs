@@ -61,29 +61,6 @@ namespace Mooshak2.Services
 			return viewModel;
 		}
 
-		//public List<TeacherViewModel> getStudentsInCourseByID(int courseID)
-		//{
-		//	var result = (from n in _db.users
-		//				  join g in _db.groups on n.ID equals g.userID
-		//				  join uas in _db.userAssignmentStats on n.ID equals uas.userID
-		//				  join ut in _db.userTypes on n.userTypeID equals ut.ID
-		//				  join sc in _db.studentCourses on n.ID equals sc.userID
-		//				  join c in _db.courses on sc.courseID equals c.ID
-		//				  where ut.type == "student"
-		//				  && c.ID == courseID
-		//				  && uas.submissionCount >= 0
-		//				  orderby n.name ascending
-		//				  select new { users = n, groups = g.name, userAssignmentStats = uas.submissionCount }).Select(x => new TeacherViewModel
-		//				  {
-		//					  Name = x.users.name,
-		//					  Username = x.users.username,
-		//					  Group = (x.groups == null ? " " : x.groups),
-		//					  Submission = x.userAssignmentStats
-		//				  }).ToList();
-
-		//	return result;
-		//}
-
 		public List<TeacherViewModel> getStudentsInCourseByID(int courseID)
 		{
 			var result = (from n in _db.users
@@ -100,7 +77,7 @@ namespace Mooshak2.Services
 						  {
 							  Name = x.users.name,
 							  Username = x.users.username,
-							  Group = x.groups,
+							  Group = (x.groups == null ? " " : x.groups),
 							  Submission = x.userAssignmentStats
 						  }).ToList();
 

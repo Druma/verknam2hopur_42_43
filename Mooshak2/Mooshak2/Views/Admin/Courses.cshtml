@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Mooshak2.ViewModels.CoursesViewModel>
+﻿@model Mooshak2.ViewModels.AdminViewModel
 
 @{
     Layout = "~/Views/Shared/_Masterpage.cshtml";
@@ -28,13 +28,6 @@
 </header>
 <div class="container">
 
-	@*<ul class="nav nav-tabs">
-			<li><a data-toggle="tab" href="@Url.Action("Index", "AdminController")">Notendur</a></li>
-			<li><a data-toggle="tab" href="#menu1">Villuboð</a></li>
-			<li><a data-toggle="tab" href="#menu2">Áfangar</a></li>
-			<li class="active"><a data-toggle="tab" href="@Url.Action("Courses", "AdminController")"> test2</a></li>
-		</ul>*@
-
 	<div class="row">
 		<div class="col-xs-12">
 			<ul class="nav nav-tabs">
@@ -46,112 +39,46 @@
 
 	<div class="tab-content">
 		<div id="home" class="tab-pane fade in active">
-			<h3>Áfangar</h3>
-			<div class="row">
-				<div class="col-md-4">
-					<table>
-						<thead>
-							<tr>
-								<th>@Html.DisplayNameFor(Model => Model.Name)</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach (var item in Model)
+			<h3>Link Users To Course</h3>
+			<div class="container">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#home">Teachers</a></li>
+					<li><a data-toggle="tab" href="#menu1">Students</a></li>
+				</ul>
+
+				<div class="tab-content">
+					<div id="home" class="tab-pane fade in active">
+						@using (Html.BeginForm("LinkTeacher", "Admin", FormMethod.Post, new { @class = "no-border", id = "linkForm", }))
+						{
+							@Html.LabelFor(Model => Model.Teachers)
+							@Html.DropDownListFor(Model => Model.TeacherID, Model.Teachers, "Choose...", new { @class = "form-control" })
+
+							@Html.LabelFor(Model => Model.Courses)
+							@Html.DropDownListFor(Model => Model.CourseID, Model.Courses, "Choose...", new { @class = "form-control", id = "TCourse" })
+
+							<input type="submit" id="linkBtnT" value="Link" />
+						}
+					</div>
+					<div id="menu1" class="tab-pane fade">
+						<div class="col-md-4">
+							@using (Html.BeginForm("LinkStudent", "Admin", FormMethod.Post, new { @class = "no-border", id = "linkForm", }))
 							{
-								<tr>
-									<td>
-										@Html.DisplayFor(modelItem => item.Name)
-									</td>
-								</tr>
+								@Html.LabelFor(Model => Model.Students)
+								@Html.DropDownListFor(Model => Model.StudentID, Model.Students, "Choose...", new { @class = "form-control" })
+
+								@Html.LabelFor(Model => Model.Courses)
+								@Html.DropDownListFor(Model => Model.CourseID, Model.Courses, "Choose...", new { @class = "form-control", id = "SCourse" })
+
+								<input type="submit" id="linkBtnS" value="Link" />
 							}
-						</tbody>
-					</table>
-				</div>
-
-
-			</div>
-		</div>
-
-
-		<div id="menu2" class="tab-pane fade">
-			<h3>Áfangar</h3>
-			<div class="row">
-				<div class="col-md-4">
-					<input type="submit" value="Stofna nýjan áfanga" />
-					<table>
-						<thead>
-							<tr>
-								<th>@Html.DisplayNameFor(Model => Model.Name)</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach (var item in Model)
-							{
-								<tr>
-									<td>
-										@Html.DisplayFor(modelItem => item.Name)
-									</td>
-								</tr>
-							}
-						</tbody>
-					</table>
-
-					<select id="kennaraval">
-						<option></option>
-						<option></option>
-					</select>
-				</div>
-
-				<div class="col-md-4">
-					<table>
-						<thead>
-							<tr>
-								<th>Nemendur Valins Áfanga</th>
-							</tr>
-						</thead>
-						<tbody>
-							@*@ foreach(ApplicationUser.RealName where Authorization = 1)
-								{
-								<tr>
-									<td>
-										this.RealName;
-									</td>
-								</tr>
-								} TODO: Finna almennilegan kóða til að sækja þetta*@
-
-						</tbody>
-					</table>
-
-					<input type="submit" value="Eyða völdum nemendum úr áfanganum" />
-
-				</div>
-
-				<div class="col-md-4">
-					<input type="submit">Tengja valda nemendur við valin áfanga>
-
-					<table>
-						<thead>
-							<tr>
-								<th>Notendur Mooshak</th>
-							</tr>
-						</thead>
-						<tbody>
-							@*@ foreach(ApplicationUser.RealName where Authorization = 1)
-								{
-								<tr>
-									<td>
-										this.RealName;
-									</td>
-								</tr>
-								} TODO: Finna almennilegan kóða til að sækja þetta*@
-
-						</tbody>
-					</table>
+						</div>
+					</div>
+					<div id="menu2" class="tab-pane fade">
+						<h3>Menu 2</h3>
+						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
 </div>

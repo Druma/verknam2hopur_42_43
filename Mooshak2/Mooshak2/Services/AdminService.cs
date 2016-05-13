@@ -16,60 +16,129 @@ namespace Mooshak2.Services
         {
             _db = new dbContext();
         }
-        public List<SelectListItem> getAllUsers()
+        public List<AdminViewModel> getAllUsers()
         {
-            //var result = (from n in _db.users
-            //              where n.userTypeID == 3
-            //              orderby n.name ascending
-            //              select n).ToList();
+			//List<SelectListItem> users = new List<SelectListItem>();
 
-            List<SelectListItem> users = new List<SelectListItem>();
+			//users.Add(new SelectListItem() {});
 
-            users.Add(new SelectListItem() {});
+			//_db.courses.ToList().ForEach((x) =>
+			//{
+			//    users.Add(new SelectListItem() { Value = x.ID.ToString(), Text = x.name });
+			//});
 
-            _db.courses.ToList().ForEach((x) =>
-            {
-                users.Add(new SelectListItem() { Value = x.ID.ToString(), Text = x.name });
-            });
+			var users = _db.users.Where(x => (x.userTypeID == 3 || x.userTypeID == 2)).Select(x => new AdminViewModel
+			{
+				Name = x.name
+			}).ToList();
 
-            return users;
+			return users;
         }
 
-        public List<SelectListItem> GetAllCourses()
+		public List<AdminViewModel> getUserTypes()
+		{
+			var types = (from ut in _db.userTypes
+						 where ut.ID != 1
+						 select ut).Select(x => new AdminViewModel
+						 {
+							 UserTypeID = x.ID,
+							 UserType = x.type
+						 }).ToList();
+
+			return types;
+		}
+
+		public List<AdminViewModel> GetAllCourses()
         {
-            List<SelectListItem> courses = new List<SelectListItem>();
+			//List<SelectListItem> courses = new List<SelectListItem>();
 
-            courses.Add(new SelectListItem() { Value = "", Text = "Assignments - " });
+			//courses.Add(new SelectListItem() { Value = "", Text = "Assignments - " });
 
-            _db.courses.ToList().ForEach((x) =>
-            {
-                courses.Add(new SelectListItem() { Value = x.ID.ToString(), Text = x.name });
-            });
+			//_db.courses.ToList().ForEach((x) =>
+			//{
+			//    courses.Add(new SelectListItem() { Value = x.ID.ToString(), Text = x.name });
+			//});
+
+			var courses = (from c in _db.courses
+						   select c).Select(x => new AdminViewModel
+						   {
+							   CourseID = x.ID,
+							   Course = x.name
+						   }).ToList();
 
             return courses;
-
-            //var result = _db.courses.Select(x => new CoursesViewModel
-            //{
-            //    Name = x.name
-            //}).ToList();
-
-            //return result;
         }
 
-        //public List<SelectListItem> GetAvailableSubAssignments()
-        //{
-        //    List<SelectListItem> SubAssignments = new List<SelectListItem>();
+		public List<AdminViewModel> getAllTeachers()
+		{
+			var teachers = (from u in _db.users
+							join ut in _db.userTypes on u.userTypeID equals ut.ID
+							where ut.type == "teacher"
+							select u).Select(x => new AdminViewModel
+							{
+								TeacherID = x.ID,
+								TeacherName = x.name
+							}).ToList();
 
-        //    SubAssignments.Add(new SelectListItem() { Value = "", Text = "Assignments - " });
+			return teachers;
+		}
 
-        //    _db.assignments.ToList().ForEach((x) =>
-        //    {
-        //        SubAssignments.Add(new SelectListItem() { Value = x.ID.ToString(), Text = x.name });
-        //    });
+		public List<AdminViewModel> getAllStudents()
+		{
+			var students = (from u in _db.users
+							join ut in _db.userTypes on u.userTypeID equals ut.ID
+							where ut.type == "student"
+							select u).Select(x => new AdminViewModel
+							{
+								TeacherID = x.ID,
+								StudentName = x.name
+							}).ToList();
 
-        //    return SubAssignments;
-        //}
+			return students;
+		}
 
+		public void registerUser(AdminViewModel newUser)
+		{
+			using (var context = new dbContext())
+			{
+				user model = new user
+				{
+					name = newUser.Name,
+					username = newUser.Username,
+					password = newUser.Password,
+					userTypeID = newUser.UserTypeID
+				};
+				context.users.Add(model);
+				context.SaveChanges();
+			}
+		}
 
-    }
+		public void linkTeacher(AdminViewModel teacherCourseLink)
+		{
+			using (var context = new dbContext())
+			{
+				teacherCours model = new teacherCours
+				{
+					userID = teacherCourseLink.TeacherID,
+					courseID = teacherCourseLink.CourseID,
+				};
+				context.teacherCourses.Add(model);
+				context.SaveChanges();
+			}
+		}
+
+		public void linkStudent(AdminViewModel StudentCourseLink)
+		{
+			using (var context = new dbContext())
+			{
+				studentCours model = new studentCours
+				{
+					userID = StudentCourseLink.TeacherID,
+					courseID = StudentCourseLink.CourseID,
+				};
+				context.studentCourses.Add(model);
+				context.SaveChanges();
+			}
+		}
+	}
 }
