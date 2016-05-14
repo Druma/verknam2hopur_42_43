@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<Mooshak2.ViewModels.TeacherViewModel>*@
-@model Mooshak2.ViewModels.AssignmentViewModel
+﻿@model Mooshak2.ViewModels.AssignmentViewModel
 
 @{
     Layout = "~/Views/Shared/_Masterpage.cshtml";
@@ -39,14 +38,14 @@
 
 			<div class="tab-content">
 
-				<div id="settings" class="tab-pane fade in active" > <!-- Tab #1 : START -->
+				<div id="settings"> <!-- Tab #1 : START -->
 
 					<h3>Settings</h3>
 					@using (Html.BeginForm("Create", "Teacher", FormMethod.Post, new { @class = "no-border", id = "assignmentForm" }))
 					{
 						@Html.ValidationSummary(true, "Choose Course Create a Assignment For");
 
-						@Html.DropDownListFor(Model => Model.CourseID, Model.Courses, "Choose...", new { @class = "form-control", required = "" })
+						@Html.DropDownListFor(Model => Model.CourseID, Model.Courses, "Choose...", new { @class = "form-control"})
 
 						@Html.TextBoxFor(Model => Model.Name, new { @class = "form-control", placeholder = "Assignment 1", required = "" })
 
@@ -57,10 +56,9 @@
 						<input type="datetime-local" id="assignmentEnd" class="form-control" placeholder="9/9/1999" />
 						<br />
 						<label for="allowGroups">Allow Groups</label>
-						<input type="checkbox" id="allowGroups" value="allowGroups" onclick="validate()" />
 						<br />
-						<select name="groupSize" id="groupSize" disabled>
-							<option value="0">Choose...</option>
+						<select name="groupSize" id="groupSize">
+							<option value="0">No groups</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -73,10 +71,9 @@
 						</select>
 						<br />
 						<label for="NumOfSubmission">Number of Submissions</label>
-						<input type="checkbox" id="NumOfSubmission" value="NumOfSubmission" onclick="validate()" />
 						<br />
-						<select name="submissionNumber" id="submissionNumber" disabled>
-							<option value="0">Choose...</option>
+						<select name="submissionNumber" id="submissionNumber">
+							<option value="0">Infinite uploads</option>
 							<option value="10">10</option>
 							<option value="20">20</option>
 							<option value="30">30</option>
@@ -95,71 +92,46 @@
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
 						</select>
+						<br />
+						<!--First milestone input.-->
+						@Html.LabelFor(Model => Model.Description)
+						<br />
+						@Html.TextAreaFor(Model => Model.Description)
 						<br />
 						<label class="btn btn-primary">
 							<input type="file" name="file" id="file" />
 							Upload solution file.
 						</label>
-						<input type="hidden" value="Solution File..." name="solutionFile", id="solutionFile"/>
+						<input type="hidden" value="Solution File..." name="solutionFile" , id="solutionFile" />
 						<br />
-						@Html.LabelFor(Model => Model.Description)
+						<!--Second milestone input.-->
+						<label id="descriptionLabel2" for="Description2">Description 2</label>
 						<br />
-						@Html.TextAreaFor(Model => Model.Description)
+						<textarea id="Description2" name="Description2"></textarea>
 						<br />
+						<label id="uploadBtn2" class="btn btn-primary">
+							<input type="file" name="file2" id="file2" />
+							Upload solution file.
+						</label>
+						<input type="hidden" value="Solution File..." name="solutionFile2" , id="solutionFile2" />
+						<br />
+						<!--Third milestone input.-->
+						<label id="descriptionLabel3" for="Description3">Description 3</label>
+						<br />
+						<textarea id="Description3" name="Description3"></textarea>
+						<br />
+						<label id="uploadBtn3" class="btn btn-primary">
+							<input type="file" name="file3" id="file3" />
+							Upload solution file.
+						</label>
+						<input type="hidden" value="Solution File..." name="solutionFile3" , id="solutionFile3" />
 						<input type="button" id="btnSave" value="Create" />
 					}
 					<!--TODO: Code for dynamic display of Solution picks and project descriptions.-->
 
-				</div> <!-- Tab #1 : END -->
-
-				<div id="studentList" class="tab-pane fade"> <!-- Tab #2 : START -->
-					
-					<h3>Student List</h3>
-						@*<table>
-								<thead>
-									<tr>
-										<th>
-											@Html.DisplayNameFor(Model => Model.Name)
-										</th>
-										<th>
-											@Html.DisplayNameFor(Model => Model.Username)
-										</th>
-										<th>
-											@Html.DisplayNameFor(Model => Model.Group)
-										</th>
-										<th>
-											@Html.DisplayNameFor(Model => Model.Submission)
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									@foreach (var item in Model)
-									{
-										<tr>
-											<td>
-												@Html.DisplayFor(modelItem => item.Name)
-											</td>
-											<td>
-												@Html.DisplayFor(modelItem => item.Username)
-											</td>
-											<td>
-												@Html.DisplayFor(modelItem => item.Group)
-											</td>
-											<td>
-												@Html.DisplayFor(modelItem => item.Submission)
-											</td>
-										</tr>
-									}
-								</tbody>
-						</table>*@
-				</div> <!-- Tab #2 : END -->
-			
+				</div> <!-- Tab #1 : END -->			
 			</div>
-
 		</div>
 	</div> 
-
 </div>
