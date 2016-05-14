@@ -54,6 +54,25 @@ var assignmentsPart = {
         assignmentsPart.eventListners();
     },
     eventListners: function () {
+        $("#Username").on('change', function () {
+            var value = $(this).val();
+            $.ajax({
+                url: '/Student/GetAssignmentParts',
+                type: 'GET',
+                data: { Id: value },
+                success: function (data) {
+                    $('#des2').hide();
+                    var options = $("#project");
+                    options.empty();
+                    $(data).each(function (indx, item) {
+                        var itemText = item.Text;
+                        var itemValue = item.Value;
+                        options.append(new Option(itemText, itemValue));
+                    });
+                }
+            });
+        });
+
         $("#project").on('click', function () {
 
             var value2 = $(this).find("option:selected").text();
