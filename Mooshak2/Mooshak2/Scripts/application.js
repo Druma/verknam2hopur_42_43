@@ -28,6 +28,21 @@ var Students = {
 
 	        });
 	    });
+
+	    $("#CheckCode").on("submit", function (e) {
+	        e.preventDefault();
+	        $.ajax({
+	            url: this.action,
+	            type: this.method,
+	            data: $(this).serialize(),
+	            success: function (data) {
+	                console.log('success');
+	                console.log(data);
+	                $('#result').html(data);
+	                $('#result-container').show();
+	            }
+	        });
+	    });
 	}
 };
 Students.init();
