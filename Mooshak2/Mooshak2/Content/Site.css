@@ -27,17 +27,7 @@ textarea
     max-width: 17.5em;
 }
 
-/* custom stuff */
 
-input[type="file"]
-{
-	display: none;
-}
-
-.form-control
-{
-	margin: 1em auto;
-}
 
 .gray-header{
     background-color: rgba(242, 235, 235, 0.3);
