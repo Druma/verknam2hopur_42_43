@@ -52,7 +52,7 @@
 
     </div>
 </header>
-<div class="container truga">
+<div class="container studentcontainer">
     <!-- row #2 : Tabs -->
     <div class="row">
         <div class="col-sm-12">
@@ -86,9 +86,15 @@
 
                 <div id="menu1" class="tab-pane fade">
                     <h3>Uploaded code</h3>
-                    <p>
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @using (Html.BeginForm("CheckCode", "Student", FormMethod.Post, new { @class = "submitcode" }))
+                            {
+                                @Html.TextAreaFor(p => p.SubmittedCode, new { @class = "code-area" })
+                                <button class="btn btn-default btn-block">Submit Code</button>
+                            }
+                        </div>
+                    </div>
                 </div>
 
                 <div id="menu2" class="tab-pane fade">

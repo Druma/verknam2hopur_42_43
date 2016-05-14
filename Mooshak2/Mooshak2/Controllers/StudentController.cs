@@ -38,6 +38,12 @@ namespace Mooshak2.Controllers
             return Json(Listi, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult CheckCode(StudentViewModel model)
+        {
+            string code = model.SubmittedCode;
+            return Json(code,JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }

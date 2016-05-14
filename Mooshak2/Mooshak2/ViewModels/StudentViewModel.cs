@@ -33,5 +33,7 @@ namespace Mooshak2.ViewModels
         public List<SelectListItem> AvailableAssignments { get; set; }
         //List of available sub-assignments
         public List<SelectListItem> AvailableSubAssignments { get; set; }
+
+        public string SubmittedCode { get; set; }
     }
 }

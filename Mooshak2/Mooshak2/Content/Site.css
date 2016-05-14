@@ -71,3 +71,10 @@ input[type="file"]
         cursor: inherit;
         display: block;
     }
+
+.studentcontainer .code-area {
+    width: 100%;
+    max-width: none;
+    height: 150px;
+    resize: none;
+}
