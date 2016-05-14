@@ -1,34 +1,36 @@
-﻿@model Mooshak2.ViewModels.UserModel
+﻿@using Mooshak2.ViewModels
+@model LoginInfo
 <!--Here we use the _Login layout from the Shared directory-->
 @{
     Layout = "~/Views/Shared/_Masterpage.cshtml";
-}
-@{
-    ViewBag.Title = "Log In";
+    ViewBag.Title = "Log In TEST";
 }
 
 
-@using (Html.BeginForm("Index", "Student", FormMethod.Post, new { @class = "form-signin login" }))
+@using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-signin login" }))
 {
-    @Html.ValidationSummary(true, "Login failed. Check your login details");
     <fieldset>
-
-        <!--<legend>Login Form</legend>-->
 
         <img src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
 
         <div>
-            @Html.TextBoxFor(u => u.Username, new { @class = "form-control login", placeholder = "Username", required = "", autofocus = "" })
-            @Html.ValidationMessageFor(u => u.Username)
+            @Html.TextBoxFor(p => p.Username, new { @class = "form-control", placeholder = "Username" })
+            @Html.ValidationMessageFor(p => p.Username)
         </div>
 
         <div>
-            @Html.PasswordFor(u => u.Password, new { @class = "form-control login", name = "Password", placeholder = "Password", required = "" })
-            @Html.ValidationMessageFor(u => u.Password)
+            @Html.TextBoxFor(p => p.Password, new { @class = "form-control", placeholder = "Password", type = "password" })
+            @Html.ValidationMessageFor(p => p.Password)
         </div>
 
-        <input type="submit" value="Log In" class="btn btn-success login" />
+        <input type="submit" value="Log In" class="btn btn-success" id="theSubmitButton" />
 
     </fieldset>
 
 }
+
+@if (Model.UserDidNotGetLoggedIn)
+{
+    <p>Wrong username or password</p>
+}
+

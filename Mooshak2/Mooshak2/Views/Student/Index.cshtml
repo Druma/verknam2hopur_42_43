@@ -10,97 +10,90 @@
 
 
 <header class="navbar navbar-static-top">
+    <!-- row #1 : dropdown and file upload -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-1">
+                <img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="60" width="60" />
+            </div>
+            <div class="col-xs-2 text-center">
+                <h5 class=""><span id="whoIsLoggedIn">@Model.Name</span></h5>
+                <h6 id="whatIsTheCourse">Gagnaskipan</h6>
+                @Html.DropDownListFor(model => model.Username, Model.AvailableAssignments, new { @class = "form-control" })
+            </div>
+            <div class="col-xs-3">
+                <select class="form-control" id="project">
+                    <option>Lab 1</option>
+                    <option>Lab 2</option>
+                </select>
+            </div>
+            
 
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-6">
-				<img class="pull-left" src="~/Content/Pictures/hr.gif" alt="hrlogo" height="100" width="100" />
-			</div>
-			<div class="col-xs-6 text-center">
-				<h5 class="">Daniel Freyr Sigurðsson</h5>
-				<h6>Gagnaskipan</h6>
-				<button class="btn btn-primary" id="logout" onclick="location.href='/?dis=yes'">Log out</button>
-			</div>
-		</div>
-	</div>
+            <div class="col-xs-6 text-center">
+                <button class="btn btn-primary" id="logout" onclick="location.href='/?dis=yes'">Log out</button>
+            </div>
+        </div>
+    </div>
 
+  
 </header>
 <div class="container">
 
-	<!-- row #1 : dropdown and file upload -->
-	<form action="toDatabase">
-		<div class="row text-center">
-			<div class="col-sm-3">
-				@Html.DropDownListFor(model => model.Username, Model.AvailableAssignments, new { @class = "form-control" })
-			</div>
+    
 
-			<div class="col-sm-3">
-				<select class="form-control" id="project">
-					<option>Lab 1</option>
-					<option>Lab 2</option>
-				</select>
-			</div>
+            <div class="col-sm-2">
+                <input class="btn btn-default" type="submit" value="Submit File">
+            </div>
+        </div>
+    </form>
+    <!-- row #2 : Tabs -->
+    <div class="row">
+        <div class="col-sm-12">
 
-			<div class="col-sm-4">
-				<label class="btn btn-default" id="submit" >
-					<input type="file" accept=".cpp"/>
-					Upload file from computer
-				</label>
-			</div>
+            <ul class="nav nav-tabs">
+                <li>
+                    <a data-toggle="tab" href="#home">Description</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#menu1">Uploaded code</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#menu2">Results</a>
+                </li>
+            </ul>
 
-			<div class="col-sm-2">
-				<input class="btn btn-default" type="submit" value="Submit File">
-			</div>
-		</div>
-	</form>
-	<!-- row #2 : Tabs -->
-	<div class="row">
-		<div class="col-sm-12">
+        </div>
+    </div>
 
-			<ul class="nav nav-tabs">
-				<li>
-					<a data-toggle="tab" href="#home">Description</a>
-				</li>
-				<li>
-					<a data-toggle="tab" href="#menu1">Uploaded code</a>
-				</li>
-				<li>
-					<a data-toggle="tab" href="#menu2">Results</a>
-				</li>
-			</ul>
+    <!-- row #3 : Tabed Content -->
+    <div class="row">
+        <div class="col-sm-12">
 
-		</div>
-	</div>
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                    <h3>Description</h3>
+                    <p>
+                        <span id="des2"></span>
+                    </p>
+                </div>
 
-	<!-- row #3 : Tabed Content -->
-	<div class="row">
-		<div class="col-sm-12">
+                <div id="menu1" class="tab-pane fade">
+                    <h3>Uploaded code</h3>
+                    <p>
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
 
-			<div class="tab-content">
-				<div id="home" class="tab-pane fade in active">
-					<h3>Description</h3>
-					<p>
-						<span id="des2"></span>
-					</p>
-				</div>
+                <div id="menu2" class="tab-pane fade">
+                    <h3>Results</h3>
+                    <p>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+                    </p>
+                </div>
 
-				<div id="menu1" class="tab-pane fade">
-					<h3>Uploaded code</h3>
-					<p>
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					</p>
-				</div>
+            </div>
 
-				<div id="menu2" class="tab-pane fade">
-					<h3>Results</h3>
-					<p>
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-					</p>
-				</div>
-
-			</div>
-
-		</div>
-	</div>
+        </div>
+    </div>
 
 </div>

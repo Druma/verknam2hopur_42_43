@@ -7,15 +7,56 @@ using System.Web.Mvc;
 
 namespace Mooshak2.Services
 {
-    
+
     public class StudentService
     {
         private dbContext _db;
 
         public StudentService()
         {
-             _db = new dbContext();
+            _db = new dbContext();
         }
+
+        public bool UserIsLogedIn(string username, string password)
+        {
+            var gaur = _db.users.Where(p => p.username == username && p.password == password).ToList();
+            if (gaur.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public user GetUser(string username, string password)
+        {
+            var gaur = _db.users.Where(p => p.username == username && p.password == password).ToList();
+            return gaur.First();
+        }
+
+        public string IsUserNameAndPasswordInDataBase(LoginInfo para)
+        {
+
+
+            string User = (from n in _db.users
+                           where n.username == para.Username
+                           select n).FirstOrDefault().ToString();
+
+            string Pass = (from n in _db.users
+                           where n.password == para.Password
+                           select n).FirstOrDefault().ToString();
+            if (para.Username == User && para.Password == Pass)
+            {
+                return "success";
+
+            }
+            return "";
+
+
+        }
+
         public List<StudentViewModel> getAllStudents()
         {
             //var result = (from n in _db.users
@@ -70,7 +111,13 @@ namespace Mooshak2.Services
 
             return SubAssignments;
         }
-        
+
+        public string GetUserName()
+        {
+            string daniel = "daniel freyr sigurdsson";
+            return daniel;
+        }
+
 
     }
 }

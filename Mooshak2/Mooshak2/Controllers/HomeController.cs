@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mooshak2.Services;
+using Mooshak2.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,10 +12,64 @@ namespace Mooshak2.Controllers
 {
     public class HomeController : Controller
     {
+        private dbContext _db = new dbContext();
+        private StudentService _studentService = new StudentService();
+
+        public ActionResult GetUsernameFromDataBase(int? id)
+        {
+            //Student student = new Student { Name = "Patrekur", Age = 27 };
+            // StudentViewModel valli = new StudentViewModel { Name = "DANIEL FREYR" };
+            StudentService theUser = new StudentService();
+            string lookingForTheUser = theUser.GetUserName();
+            return Json(lookingForTheUser, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ValidateUser(string userid, string password)
+        {
+            var data = from c in _db.users where c.username == userid && c.password == password select c;
+            if (data.Count() > 0)
+                return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { Success = false }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult IndexTest()
+        {
+            return View();
+        }
+
+        public ActionResult Login(LoginInfo LoginInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_studentService.UserIsLogedIn(LoginInfo.Username, LoginInfo.Password))
+                {
+                    StudentViewModel model = new StudentViewModel();
+                    model.AvailableAssignments = _studentService.GetAvailableAssignments();
+                    model.AvailableSubAssignments = _studentService.GetAvailableSubAssignments();
+                    model.Name = _studentService.GetUser(LoginInfo.Username, LoginInfo.Password).name;
+                    model.Username = _studentService.GetUser(LoginInfo.Username, LoginInfo.Password).username;
+                    return View("~/Views/Student/Index.cshtml", model);
+                }
+                else
+                {
+                    LoginInfo.UserDidNotGetLoggedIn = true;
+                    return View("~/Views/Home/Index.cshtml", LoginInfo);
+                }
+            }
+            LoginInfo.UserDidNotGetLoggedIn = false;
+            return View("~/Views/Home/Index.cshtml", LoginInfo);
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            LoginInfo LoginInfo = new LoginInfo();
+            LoginInfo.UserDidNotGetLoggedIn = false;
+            return View("~/Views/Home/Index.cshtml", LoginInfo);
+
         }
 
         [HttpPost]
@@ -97,8 +153,9 @@ namespace Mooshak2.Controllers
             {
                 var user = _db.SystemUsers.FirstOrDefault(u => u.Username == email);
 
-                if(user != null){
-                    if(user.Password == crypto.Compute(password,user.PasswordSalt))
+                if (user != null)
+                {
+                    if (user.Password == crypto.Compute(password, user.PasswordSalt))
                     {
                         isValid = true;
                     }

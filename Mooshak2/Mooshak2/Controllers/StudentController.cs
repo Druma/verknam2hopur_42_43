@@ -20,7 +20,9 @@ namespace Mooshak2.Controllers
             StudentViewModel model = new StudentViewModel();
             model.AvailableAssignments = _studentService.GetAvailableAssignments();
             model.AvailableSubAssignments = _studentService.GetAvailableSubAssignments();
-            
+            model.Name = "Apamaður";
+            model.Username = "apamadurinn";
+
             return View(model);
         }
 
@@ -32,10 +34,10 @@ namespace Mooshak2.Controllers
 
             List<SelectListItem> Listi = gaur.SubAssignmentsById(Id);
 
-            
+
             return Json(Listi, JsonRequestBehavior.AllowGet);
         }
 
-        
+
     }
 }
