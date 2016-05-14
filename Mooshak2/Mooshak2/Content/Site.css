@@ -39,3 +39,35 @@ input[type="file"]
 	margin: 1em auto;
 }
 
+.gray-header{
+    background-color: rgba(242, 235, 235, 0.3);
+    padding: 15px;
+    overflow: hidden;
+}
+.assignment-chooser label {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.assignment-chooser .file-input {margin-top: 0;}
+.assignment-chooser .upload-file { margin-left: 30px;}
+
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
